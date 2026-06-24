@@ -2,23 +2,64 @@
 
 Landing page estática responsive en HTML, CSS y JavaScript vanilla para la línea Marley Coffee Ready to Drink Chile. La experiencia traduce la referencia de campaña a secciones reales con capas, parallax, placeholders CSS y assets opcionales.
 
-## Compatibilidad con GitHub Pages
+## Workflow principal: Vercel
 
-Este proyecto está preparado para publicarse como sitio estático en GitHub Pages desde una URL de repositorio como:
+Vercel es el flujo principal de preview y despliegue para esta landing estática.
+
+### Producción
+
+- **Rama de producción:** `main`
+- **URL de producción:** https://marley-rtd-parallax.vercel.app/
+- Los cambios deben llegar a producción mediante merge a `main` después de revisar y aprobar el Preview Deployment de Vercel.
+
+### Preview deployments
+
+- Cada pull request o rama distinta de `main` debe generar un **Vercel Preview Deployment**.
+- Usa la URL de preview de Vercel para hacer QA antes de mergear.
+- Mergea a `main` solo después de que el preview haya sido revisado y aprobado.
+
+### Configuración del sitio estático en Vercel
+
+Configura el proyecto en Vercel con estos valores:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | `Other` / `Static HTML` |
+| Build command | none |
+| Output directory | `.` |
+| Install command | none |
+
+## QA antes de mergear
+
+Revisa la URL de Vercel Preview antes de mergear a `main`:
+
+- [ ] Layout desktop.
+- [ ] Layout mobile.
+- [ ] Parallax smoothness.
+- [ ] No hay elementos cortados o croppeados accidentalmente.
+- [ ] No hay errores en consola.
+- [ ] Los assets de producto cargan correctamente.
+- [ ] Los links de CTA funcionan.
+- [ ] Claims revisados antes de producción.
+
+## GitHub Pages opcional / fallback
+
+GitHub Pages queda documentado solo como alternativa de respaldo. El flujo primario para previews y producción es Vercel.
+
+Este proyecto también puede publicarse como sitio estático en GitHub Pages desde una URL de repositorio como:
 
 ```txt
 https://USUARIO.github.io/REPO/
 ```
 
-Checklist aplicado:
+Checklist de compatibilidad para GitHub Pages:
 
 - `index.html` existe en la raíz del repositorio y es el documento de entrada que GitHub Pages sirve por defecto.
 - Las rutas locales de CSS y JavaScript usan prefijo relativo: `./styles.css` y `./script.js`.
 - Las imágenes opcionales se referencian con rutas relativas bajo `./assets/rtd/` mediante `data-src` y `data-bg-src`.
 - No se requieren rutas absolutas del tipo `/archivo` o `/assets/...`, por lo que la landing funciona correctamente cuando el sitio se sirve desde el subdirectorio `/REPO/` de GitHub Pages.
-- No se incluyen archivos binarios nuevos en este cambio; si necesitas imágenes reales, súbelas manualmente respetando la estructura documentada abajo.
 
-## Activar GitHub Pages
+### Activar GitHub Pages como fallback
 
 1. Sube estos archivos a la rama `main` del repositorio.
 2. En GitHub, abre **Settings → Pages**.
@@ -54,6 +95,13 @@ frost-texture.png
 ```
 
 Mientras un asset no exista, el sitio mantiene la composición con gradientes, pseudo-elementos y placeholders CSS no binarios. Las latas usan un placeholder CSS hasta que el PNG correspondiente carga correctamente.
+
+### Instrucciones de assets
+
+- Las imágenes deben subirse manualmente a `./assets/rtd/`.
+- No commitees assets binarios a través de Codex salvo aprobación explícita.
+- No cambies las rutas si mantienes los nombres exactos.
+- Si un asset tiene un encuadre distinto, ajusta `background-position`, `width` o `data-speed` en lugar de editar la imagen desde el repositorio.
 
 ## Ajustar parallax y movimiento
 
