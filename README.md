@@ -2,6 +2,34 @@
 
 Landing page estática responsive en HTML, CSS y JavaScript vanilla para la línea Marley Coffee Ready to Drink Chile.
 
+## Compatibilidad con GitHub Pages
+
+Este proyecto está preparado para publicarse como sitio estático en GitHub Pages desde una URL de repositorio como:
+
+```txt
+https://USUARIO.github.io/REPO/
+```
+
+Checklist aplicado:
+
+- `index.html` existe en la raíz del repositorio y es el documento de entrada que GitHub Pages sirve por defecto.
+- Las rutas locales de CSS y JavaScript usan prefijo relativo: `./styles.css` y `./script.js`.
+- Las imágenes opcionales se referencian con rutas relativas bajo `./assets/rtd/` mediante `data-src` y `data-bg-src`.
+- No se requieren rutas absolutas del tipo `/archivo` o `/assets/...`, por lo que la landing funciona correctamente cuando el sitio se sirve desde el subdirectorio `/REPO/` de GitHub Pages.
+- No se incluyen archivos binarios nuevos en el repositorio; si necesitas imágenes reales, súbelas manualmente respetando la estructura documentada abajo.
+
+## Activar GitHub Pages
+
+1. Sube estos archivos a la rama `main` del repositorio.
+2. En GitHub, abre **Settings → Pages**.
+3. En **Build and deployment**, selecciona **Deploy from a branch**.
+4. Elige la rama **main**.
+5. Elige la carpeta **/root**.
+6. Guarda la configuración y espera a que GitHub Pages publique el sitio.
+7. Abre la URL publicada con el formato `https://USUARIO.github.io/REPO/` y verifica que carguen estilos, JavaScript y placeholders/imagenes.
+
+> Nota: en la interfaz de GitHub Pages, la carpeta raíz puede mostrarse como `/ (root)`. Selecciona esa opción para publicar desde la raíz del repositorio.
+
 ## Estructura
 
 ```txt
@@ -36,7 +64,7 @@ Landing page estática responsive en HTML, CSS y JavaScript vanilla para la lín
 
 - Velocidad de parallax: cambia `data-speed` en elementos de `index.html`.
 - Movimiento con mouse: cambia `data-mouse` en las latas/decorativos de `index.html`.
-- Rutas de imágenes: mantén los assets en `./assets/rtd/` o actualiza `data-src` / `data-bg-src` en `index.html`.
+- Rutas de imágenes: mantén los assets en `./assets/rtd/` o actualiza `data-src` / `data-bg-src` en `index.html` conservando rutas relativas, por ejemplo `./assets/rtd/nombre.png`.
 
 ## Previsualización local
 
@@ -48,11 +76,4 @@ python3 -m http.server 4173
 
 Luego abre `http://localhost:4173/` en el navegador.
 
-## Publicación en GitHub Pages
-
-1. Sube los assets reales a `assets/rtd/`.
-2. En GitHub, ve a **Settings → Pages**.
-3. Selecciona la rama que contiene estos archivos y la carpeta raíz (`/`).
-4. Guarda la configuración y espera a que GitHub Pages publique el sitio.
-
-Las rutas usan prefijo relativo `./`, por lo que son compatibles con GitHub Pages en repositorios de usuario, organización o proyecto.
+Para simular una URL de proyecto de GitHub Pages, sirve el repositorio desde un subdirectorio y abre una ruta como `http://localhost:4173/REPO/`. Las rutas relativas con `./` seguirán resolviendo contra ese directorio.
