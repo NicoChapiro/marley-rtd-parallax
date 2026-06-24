@@ -56,6 +56,60 @@ Revisa la URL de Vercel Preview antes de mergear a `main`:
 - Para validar assets opcionales faltantes, renombra temporalmente uno de los archivos bajo `./assets/rtd/` en una copia local y recarga la página; debe aparecer el placeholder CSS sin romper el layout.
 - Para validar movimiento reducido, activa la emulación de `prefers-reduced-motion: reduce` en DevTools o en el sistema operativo antes de recargar la página.
 
+
+## Checklist de lanzamiento a producción
+
+Antes del lanzamiento comercial final, usa Vercel como flujo primario y completa esta revisión sin rediseñar la página:
+
+- [ ] **URL de producción en Vercel:** abrir `https://marley-rtd-parallax.vercel.app/` y confirmar que corresponde a la versión aprobada para lanzamiento.
+- [ ] **Preview de Vercel antes de futuros merges:** revisar y aprobar el Vercel Preview Deployment de cada PR antes de mergear a `main`.
+- [ ] **QA desktop:** revisar 1280px, 1440px y 1920px.
+- [ ] **QA mobile:** revisar 320px, 375px, 390px y 430px.
+- [ ] **Consola:** confirmar que no existan errores JavaScript ni errores de carga inesperados.
+- [ ] **Scroll horizontal:** confirmar que no exista scroll horizontal en desktop ni mobile.
+- [ ] **Links de CTA:** validar “Comprar ahora”, “Ver sabores” y “Comprar Ready to Drink”.
+- [ ] **Movimiento reducido:** confirmar que `prefers-reduced-motion: reduce` mantiene el contenido visible y desactiva animaciones/parallax.
+- [ ] **Fallback opcional de assets:** confirmar que los placeholders CSS sigan funcionando si faltan imágenes opcionales.
+- [ ] **Validación de claims/legal:** confirmar aprobación legal, nutricional y/o regulatoria de los claims comerciales antes de producción.
+- [ ] **Aprobación final de stakeholders:** registrar aprobación final de marca, marketing, legal/regulatorio y equipo responsable del lanzamiento.
+
+## Validación de claims comerciales
+
+Los siguientes claims permanecen en la landing, pero deben contar con aprobación legal, nutricional y/o regulatoria antes del lanzamiento comercial final:
+
+- “Sin sellos”
+- “7 ingredientes”
+- “Apto para deportistas”
+- “Equivalente a 1 espresso”
+
+No elimines estos claims de la página durante esta etapa; solo deben avanzar a producción cuando la revisión comercial correspondiente confirme que pueden publicarse.
+
+## Handoff de assets finales
+
+Sube manualmente los assets reales a `./assets/rtd/` cuando estén aprobados. No cargues imágenes a través de Codex ni agregues binarios al repositorio salvo aprobación explícita.
+
+Assets esperados y especificaciones recomendadas:
+
+- **Latas de producto:** PNG transparente, recortado limpio, con sombra/reflejo solo si viene aprobado desde diseño.
+- **Lifestyle:** JPG o WebP optimizado, con encuadre suficiente para desktop y mobile.
+- **Hielo foreground:** PNG transparente para capas frontales de hielo.
+- **Splash/frost:** PNG transparente o fallback CSS si no hay arte final aprobado.
+- **Montaña/background opcional:** JPG o WebP optimizado, solo si existe asset final aprobado.
+- **Compresión:** comprimir todas las imágenes antes de subirlas para mantener buena carga inicial y evitar archivos innecesariamente pesados.
+- **Nombres:** mantener exactamente los nombres documentados en `./assets/rtd/README.md`; no cambiar rutas ni referencias si se usan esos nombres.
+- **Carga manual:** subir los archivos de imagen manualmente, no mediante Codex, a menos que exista aprobación explícita.
+
+### QA después de subir imágenes finales
+
+Después de cargar assets reales, revisa nuevamente la landing completa:
+
+- [ ] Revalidar todos los breakpoints desktop y mobile.
+- [ ] Confirmar crop, escala y posición de cada producto.
+- [ ] Revisar tamaño de archivo y compresión de cada imagen.
+- [ ] Validar comportamiento de carga en red normal y red lenta simulada.
+- [ ] Confirmar jerarquía visual: titulares, latas, CTA y fondos deben mantener prioridad clara.
+- [ ] Confirmar que los placeholders/fallbacks CSS sigan funcionando si alguna imagen opcional falla o no está disponible.
+
 ## GitHub Pages opcional / fallback
 
 GitHub Pages queda documentado solo como alternativa de respaldo. El flujo primario para previews y producción es Vercel.
