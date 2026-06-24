@@ -43,6 +43,9 @@ Revisa la URL de Vercel Preview antes de mergear a `main`:
 - [ ] Los assets de producto cargan correctamente.
 - [ ] Los links de CTA funcionan.
 - [ ] Claims revisados antes de producción.
+- [ ] Vercel Preview generado y listo para revisión visual antes de mergear.
+- [ ] La página conserva rutas relativas para CSS, JavaScript e imágenes opcionales.
+- [ ] La experiencia sigue funcionando si faltan assets opcionales gracias a placeholders CSS.
 
 ## GitHub Pages opcional / fallback
 
@@ -73,11 +76,11 @@ Checklist de compatibilidad para GitHub Pages:
 
 ## Estructura visual
 
-- Hero con montaña fría, badge “Nuevo”, CTA y tres latas flotantes.
+- Hero con montaña fría, badge “Nuevo”, CTA destacado, señales de hielo y tres latas flotantes.
 - Sección hielo / ritual con la secuencia “Agita, abre y disfruta”.
 - Tres secciones independientes para Vanilla Latte, Cappuccino y Caramel; cada una usa una sola lata flotante.
 - Sección lifestyle cinematográfica con fondo opcional y lata superpuesta.
-- Cierre amarillo con rasta stripe, beneficios tipo sticker y CTA final.
+- Cierre amarillo con rasta stripe, beneficios tipo sticker y CTA final como cierre fuerte de campaña.
 
 ## Assets esperados
 
