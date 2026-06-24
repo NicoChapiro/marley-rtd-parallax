@@ -70,7 +70,14 @@ function updateParallax() {
   const isDesktop = desktopQuery.matches;
 
   parallaxItems.forEach((el) => {
-    const speed = Number(el.dataset.speed || 0);
+    const mobileHeroCan = !isDesktop && el.closest('.hero__cans');
+    if (mobileHeroCan) {
+      el.style.removeProperty('transform');
+      return;
+    }
+
+    const rawSpeed = Number(el.dataset.speed || 0);
+    const speed = isDesktop ? rawSpeed : rawSpeed * 0.28;
     const rect = el.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
     const y = distance * speed * -0.24;
