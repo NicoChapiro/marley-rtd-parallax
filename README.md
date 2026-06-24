@@ -25,9 +25,11 @@ Configura el proyecto en Vercel con estos valores:
 | Setting | Value |
 | --- | --- |
 | Framework preset | `Other` / `Static HTML` |
-| Build command | none |
+| Build command | leave empty / blank |
 | Output directory | `.` |
-| Install command | none |
+| Install command | leave empty / blank |
+
+Do not type `none` into Vercel command fields. Leave Build Command and Install Command empty so Vercel skips those steps for this static HTML/CSS/JS site.
 
 ## QA antes de mergear
 
