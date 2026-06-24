@@ -39,6 +39,8 @@ Checklist aplicado:
 ├── script.js
 └── assets/
     └── rtd/
+        ├── .gitkeep
+        ├── README.md
         ├── rtd-cappuccino-250ml.png
         ├── rtd-vainilla-latte-250ml.png
         ├── rtd-caramel-250ml.png
@@ -52,7 +54,7 @@ Checklist aplicado:
         └── vanilla-flower.png
 ```
 
-> Los archivos de imagen no se incluyen en este commit. Súbelos manualmente a `./assets/rtd/` con esos nombres. Mientras no existan, la landing usa gradientes y placeholders CSS no binarios para seguir funcionando.
+> Los archivos de imagen no se incluyen en este commit. La carpeta `./assets/rtd/` se conserva con `.gitkeep` y contiene un `README.md` propio con la lista de nombres esperados. Sube ahí los binarios manualmente cuando estén disponibles; mientras no existan, la landing usa gradientes y placeholders CSS no binarios para seguir funcionando.
 
 ## Archivos principales
 
