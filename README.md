@@ -35,17 +35,26 @@ Do not type `none` into Vercel command fields. Leave Build Command and Install C
 
 Revisa la URL de Vercel Preview antes de mergear a `main`:
 
-- [ ] Layout desktop.
-- [ ] Layout mobile.
+- [ ] Layout desktop en 1280px, 1440px y 1920px.
+- [ ] Layout mobile en 320px, 375px, 390px y 430px.
 - [ ] Parallax smoothness.
 - [ ] No hay elementos cortados o croppeados accidentalmente.
+- [ ] No hay scroll horizontal en mobile ni desktop.
 - [ ] No hay errores en consola.
 - [ ] Los assets de producto cargan correctamente.
-- [ ] Los links de CTA funcionan.
+- [ ] `prefers-reduced-motion: reduce` desactiva animaciones/parallax y deja el contenido visible.
+- [ ] Los links de CTA funcionan: “Comprar ahora”, “Ver sabores” y “Comprar Ready to Drink”.
 - [ ] Claims revisados antes de producción.
 - [ ] Vercel Preview generado y listo para revisión visual antes de mergear.
 - [ ] La página conserva rutas relativas para CSS, JavaScript e imágenes opcionales.
 - [ ] La experiencia sigue funcionando si faltan assets opcionales gracias a placeholders CSS.
+
+### Notas de QA de producción
+
+- Los CTA apuntan a `https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink`.
+- La landing debe revisarse con consola abierta para confirmar que no existan errores JavaScript.
+- Para validar assets opcionales faltantes, renombra temporalmente uno de los archivos bajo `./assets/rtd/` en una copia local y recarga la página; debe aparecer el placeholder CSS sin romper el layout.
+- Para validar movimiento reducido, activa la emulación de `prefers-reduced-motion: reduce` en DevTools o en el sistema operativo antes de recargar la página.
 
 ## GitHub Pages opcional / fallback
 

@@ -12,13 +12,18 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  max-width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   background: var(--black);
   color: var(--cream);
   font-family: "Courier New", Courier, monospace;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .rtd-page { min-height: 100vh; background: radial-gradient(circle at 50% 0, #16222a 0, var(--black) 42%); }
@@ -34,6 +39,11 @@ p { font-size: clamp(1.08rem, 1.55vw, 1.34rem); line-height: 1.72; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 62px; margin-top: 32px; padding: 19px 38px; border: 2px solid var(--gold); border-radius: 999px; background: linear-gradient(180deg, #ffe36a, var(--gold)); color: #15110a; font-family: Helvetica, Arial Black, Arial, sans-serif; font-weight: 900; text-decoration: none; text-transform: uppercase; box-shadow: 0 20px 48px rgba(0,0,0,.42), 0 0 0 8px rgba(248,196,0,.18), inset 0 1px 0 rgba(255,255,255,.45); transition: transform .25s ease, filter .25s ease, box-shadow .25s ease, outline-color .25s ease; }
 .button:hover, .button:focus-visible { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 26px 58px rgba(0,0,0,.48), 0 0 0 10px rgba(248,196,0,.24), inset 0 1px 0 rgba(255,255,255,.55); outline: 3px solid rgba(255,255,255,.8); outline-offset: 4px; }
 .button--dark { background: #111; color: var(--gold); }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
 
 .asset-bg { background-position: center; background-repeat: no-repeat; background-size: cover; }
 .rasta-stripe { position: absolute; display: block; height: 8px; background: linear-gradient(90deg, var(--green) 0 33.333%, var(--gold) 33.333% 66.666%, var(--red) 66.666%); pointer-events: none; }

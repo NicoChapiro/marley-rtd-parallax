@@ -24,6 +24,11 @@ function hydrateAssets() {
       img.classList.add('is-loaded');
       img.closest('.can-wrap')?.classList.add('has-image');
     });
+    img.addEventListener('error', () => {
+      img.removeAttribute('src');
+      img.classList.remove('is-loaded');
+      img.closest('.can-wrap')?.classList.remove('has-image');
+    }, { once: true });
   });
 
   document.querySelectorAll('[data-bg-src]').forEach((el) => {
