@@ -2,7 +2,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 const desktopQuery = window.matchMedia('(min-width: 900px)');
 const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
 parallaxItems.forEach((el) => {
-  el.dataset.baseTransform = getComputedStyle(el).transform === 'none' ? '' : getComputedStyle(el).transform;
+  if (!el.dataset.baseTransform) {
+    el.dataset.baseTransform = getComputedStyle(el).transform === 'none' ? '' : getComputedStyle(el).transform;
+  }
 });
 const progressSections = [...document.querySelectorAll('.hero, .lifestyle')];
 let ticking = false;
@@ -63,7 +65,8 @@ function getDepthTransform(el) {
   const section = el.closest('.hero, .lifestyle');
   const progress = Number(section?.style.getPropertyValue('--scroll-progress') || 0);
 
-  if (el.classList.contains('hero__photo')) return `scale(${1.045 + progress * 0.035})`;
+  if (el.classList.contains('hero__photo')) return `scale(${1.08 + progress * 0.025})`;
+  if (el.classList.contains('hero__rocks')) return `scale(${1.02 + progress * 0.01})`;
   if (el.classList.contains('lifestyle__bg')) return `scale(${1.055 + progress * 0.075})`;
 
   return el.dataset.baseTransform || '';

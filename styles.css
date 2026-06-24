@@ -1149,3 +1149,215 @@ h2 {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
   [data-parallax], .lifestyle__bg, .hero__photo, .hero__content, .hero__cans .can-wrap { transform: none !important; }
 }
+
+/* Premium Marley RTD hero refresh: scoped override for the landing hero only. */
+.hero {
+  grid-template-columns: minmax(0, .9fr) minmax(420px, .82fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 82px);
+  min-height: 100svh;
+  padding-top: max(clamp(112px, 10vw, 168px), calc(env(safe-area-inset-top) + 96px));
+  padding-bottom: max(clamp(132px, 12vw, 190px), calc(env(safe-area-inset-bottom) + 120px));
+  background:
+    linear-gradient(90deg, rgba(3, 5, 5, .94) 0%, rgba(5, 9, 10, .78) 44%, rgba(4, 6, 6, .42) 100%),
+    radial-gradient(circle at 72% 28%, rgba(192, 229, 239, .28), transparent 28%),
+    radial-gradient(circle at 68% 58%, rgba(248, 196, 0, .18), transparent 22%),
+    #050505;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .18), rgba(0, 0, 0, .66) 76%, rgba(0, 0, 0, .94)),
+    radial-gradient(ellipse at 74% 18%, rgba(232, 249, 255, .22), transparent 34%),
+    linear-gradient(105deg, rgba(255, 255, 255, .08), transparent 36%);
+}
+
+.hero__photo {
+  inset: -9% -7%;
+  z-index: -5;
+  opacity: .72;
+  background-image: linear-gradient(135deg, #9db8c2, #172328 48%, #050505);
+  filter: blur(2px) saturate(.8) contrast(1.08);
+  transform-origin: center;
+}
+
+.hero__frost {
+  z-index: -3;
+  opacity: .88;
+  background:
+    radial-gradient(circle at 75% 18%, rgba(227, 249, 255, .30), transparent 20%),
+    radial-gradient(circle at 76% 61%, rgba(248, 196, 0, .16), transparent 20%),
+    linear-gradient(115deg, transparent 0 47%, rgba(255, 255, 255, .11) 54%, transparent 65%);
+}
+
+.hero__rocks {
+  left: -8%;
+  right: -8%;
+  bottom: -2%;
+  height: clamp(190px, 30vh, 330px);
+  z-index: 2;
+  background-position: center bottom;
+  background-size: cover;
+  filter: drop-shadow(0 -28px 44px rgba(0, 0, 0, .72));
+}
+
+.hero__rocks:not(.has-image) {
+  background-image:
+    linear-gradient(160deg, transparent 0 24%, #59564b 25% 44%, #171612 45% 62%, #403d33 63% 78%, transparent 79%),
+    radial-gradient(ellipse at 48% 86%, #26231d 0 48%, transparent 49%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 5;
+  max-width: 720px;
+  padding: clamp(18px, 2.4vw, 34px) 0;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, .72);
+}
+
+.hero__kicker {
+  margin-bottom: 6px;
+  color: rgba(251, 240, 212, .92);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  letter-spacing: .22em;
+}
+
+.hero h1 {
+  max-width: 7.2ch;
+  color: var(--gold);
+}
+
+.hero__lead {
+  max-width: 35rem;
+  color: rgba(251, 240, 212, .90);
+  font-size: clamp(1.18rem, 1.65vw, 1.48rem);
+}
+
+.hero__flavours {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-left: 5px solid var(--green);
+  background: linear-gradient(90deg, rgba(111, 141, 42, .24), rgba(248, 196, 0, .12), rgba(220, 18, 51, .10));
+  box-shadow: inset 0 -3px 0 rgba(220, 18, 51, .55), inset 0 3px 0 rgba(248, 196, 0, .60);
+  color: #ffe56c;
+}
+
+.badge--new {
+  z-index: 7;
+  left: clamp(22px, 6vw, 86px);
+  width: auto;
+  min-height: auto;
+  padding: 10px 16px;
+  clip-path: none;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  background: rgba(9, 12, 11, .72);
+  color: #fff;
+  font-size: clamp(.86rem, 1.1vw, 1rem);
+  letter-spacing: .18em;
+  backdrop-filter: blur(10px);
+}
+
+.hero__cans {
+  z-index: 4;
+  min-height: clamp(560px, 66vh, 720px);
+  margin: 0;
+  overflow: visible;
+}
+
+.hero__cans::before {
+  inset: 13% -8% 15%;
+  background:
+    radial-gradient(ellipse at 52% 44%, rgba(235, 250, 255, .25), transparent 34%),
+    radial-gradient(ellipse at 50% 77%, rgba(0, 0, 0, .78), transparent 50%),
+    radial-gradient(ellipse at 52% 48%, rgba(248, 196, 0, .18), transparent 52%);
+}
+
+.hero__cans::after {
+  content: "";
+  position: absolute;
+  left: 3%;
+  right: 1%;
+  bottom: 17%;
+  height: 18%;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, .58), transparent 68%);
+  filter: blur(12px);
+}
+
+.hero__cans .can-wrap { z-index: 3; }
+.hero__cans .can-wrap--cap { left: 2%; top: 31%; }
+.hero__cans .can-wrap--car { left: 32%; top: 20%; z-index: 4; }
+.hero__cans .can-wrap--van { right: 0; top: 31%; }
+.hero .can--hero { width: clamp(178px, 16vw, 284px); }
+.hero .can-wrap--car .can--hero { width: clamp(202px, 18vw, 314px); }
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: auto;
+    padding: max(72px, calc(env(safe-area-inset-top) + 56px)) clamp(18px, 5vw, 32px) 72px;
+  }
+
+  .badge--new {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: fit-content;
+    margin-bottom: 18px;
+    transform: none !important;
+  }
+
+  .hero__content { max-width: 100%; padding: 0; transform: none !important; }
+  .hero h1 { max-width: none; font-size: clamp(3.15rem, 15vw, 6.3rem); }
+  .hero__lead { max-width: 34rem; }
+  .hero .button { width: min(100%, 360px); }
+
+  .hero__cans {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    justify-items: center;
+    width: min(100%, 520px);
+    min-height: clamp(280px, 54vw, 390px);
+    margin: 18px auto 0;
+    padding: 0 4px clamp(52px, 12vw, 70px);
+  }
+
+  .hero__cans .can-wrap,
+  .hero__cans .can-wrap--cap,
+  .hero__cans .can-wrap--car,
+  .hero__cans .can-wrap--van {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  .hero .can--hero,
+  .hero .can-wrap::before { width: clamp(92px, 27vw, 146px); }
+  .hero .can-wrap--car .can--hero,
+  .hero .can-wrap--car::before { width: clamp(106px, 30vw, 166px); }
+  .hero__rocks { height: clamp(118px, 24vh, 210px); bottom: -1%; }
+}
+
+@media (max-width: 540px) {
+  .hero { padding-bottom: 56px; }
+  .hero__flavours { display: flex; width: 100%; justify-content: center; text-align: center; letter-spacing: .06em; }
+  .hero__cans { width: 100%; min-height: clamp(240px, 64vw, 330px); padding-bottom: 48px; }
+  .hero .can--hero,
+  .hero .can-wrap::before { width: clamp(82px, 26vw, 118px); }
+  .hero .can-wrap--car .can--hero,
+  .hero .can-wrap--car::before { width: clamp(94px, 30vw, 136px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__photo, .hero__rocks, .hero__content, .hero__cans .can-wrap { transform: none !important; }
+}
