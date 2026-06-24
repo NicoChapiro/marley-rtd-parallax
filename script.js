@@ -1,6 +1,7 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isDesktop = window.matchMedia('(min-width: 900px)').matches;
+const desktopQuery = window.matchMedia('(min-width: 900px)');
 const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+const progressSections = [...document.querySelectorAll('.hero, .lifestyle')];
 let ticking = false;
 let mouseX = 0;
 let mouseY = 0;
@@ -30,8 +31,30 @@ function hydrateAssets() {
   });
 }
 
+function updateSectionProgress() {
+  progressSections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const total = window.innerHeight + rect.height;
+    const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / total));
+    section.style.setProperty('--scroll-progress', progress.toFixed(3));
+  });
+}
+
+function updateRitualSteps() {
+  const steps = [...document.querySelectorAll('[data-step]')];
+  const ritual = document.querySelector('.ritual');
+  if (!ritual || !steps.length) return;
+  const rect = ritual.getBoundingClientRect();
+  const progress = Math.min(1, Math.max(0, (window.innerHeight * 0.78 - rect.top) / rect.height));
+  steps.forEach((step, index) => {
+    step.classList.toggle('is-active', progress >= (index + 1) / (steps.length + 1));
+  });
+}
+
 function updateParallax() {
   const viewportCenter = window.innerHeight / 2;
+  const isDesktop = desktopQuery.matches;
+
   parallaxItems.forEach((el) => {
     const speed = Number(el.dataset.speed || 0);
     const rect = el.getBoundingClientRect();
@@ -42,6 +65,9 @@ function updateParallax() {
     const my = mouseY * mouse * 0.6;
     el.style.transform = `translate3d(${x}px, ${y + my}px, 0)`;
   });
+
+  updateSectionProgress();
+  updateRitualSteps();
   ticking = false;
 }
 
@@ -52,20 +78,42 @@ function requestTick() {
   }
 }
 
+function observeReveals() {
+  const revealItems = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
 hydrateAssets();
+observeReveals();
 
 if (!reduceMotion) {
   window.addEventListener('scroll', requestTick, { passive: true });
   window.addEventListener('resize', requestTick, { passive: true });
-  if (isDesktop) {
-    window.addEventListener('pointermove', (event) => {
-      mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
-      requestTick();
-    }, { passive: true });
-  }
+  window.addEventListener('pointermove', (event) => {
+    if (!desktopQuery.matches) return;
+    mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+    requestTick();
+  }, { passive: true });
   requestTick();
+} else {
+  document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
+  document.querySelectorAll('[data-step]').forEach((step) => step.classList.add('is-active'));
 }
 
-// Subir assets reales a ./assets/rtd/ con los nombres documentados en README.md.
-// Para ajustar el parallax, edita data-speed y data-mouse en index.html.
+// Upload final campaign assets manually to ./assets/rtd/ using the names documented in README.md.
+// Adjust parallax by editing data-speed and data-mouse attributes in index.html.
