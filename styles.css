@@ -1008,3 +1008,134 @@ h2 {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
   [data-parallax], .lifestyle__bg, .hero__photo, .hero__content, .hero__cans .can-wrap { transform: none !important; }
 }
+
+/* Dedicated mobile hero packshot layout: do not adapt desktop absolute cans. */
+@media (max-width: 767px) {
+  .hero {
+    display: block;
+    min-height: auto;
+    padding: max(56px, calc(env(safe-area-inset-top) + 42px)) 20px 44px;
+    overflow: hidden;
+  }
+
+  .badge--new {
+    position: relative;
+    inset: auto;
+    top: auto;
+    left: auto;
+    display: grid;
+    width: 84px;
+    min-height: 92px;
+    margin: 0 0 22px;
+    padding-left: 12px;
+    transform: none !important;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    transform: none !important;
+  }
+
+  .hero h1 {
+    max-width: none;
+    font-size: clamp(2.9rem, 14.8vw, 4.25rem);
+    line-height: .9;
+  }
+
+  .hero .button {
+    width: min(100%, 360px);
+    min-height: 66px;
+  }
+
+  .hero__cans {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    justify-items: center;
+    width: 100%;
+    max-width: 360px;
+    min-height: auto;
+    margin: 22px auto 0;
+    padding: 0 8px 16px;
+    overflow: visible;
+    transform: none !important;
+  }
+
+  .hero__cans::before {
+    inset: 30% 4px 0;
+    z-index: -1;
+    border-radius: 999px;
+  }
+
+  .hero__cans::after {
+    left: 6px;
+    right: 6px;
+    bottom: 0;
+    height: 36%;
+    z-index: -1;
+  }
+
+  .hero__cans .can-wrap,
+  .hero__cans .can-wrap--cap,
+  .hero__cans .can-wrap--car,
+  .hero__cans .can-wrap--van {
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: auto;
+    max-width: none;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: clamp(86px, 27vw, 112px);
+    max-width: 112px;
+    height: auto;
+  }
+
+  .hero__cans .can--hero {
+    display: block;
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: clamp(96px, 30vw, 124px);
+    max-width: 124px;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero {
+    padding-inline: 18px;
+  }
+
+  .hero__cans {
+    padding-inline: 4px;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: 84px;
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: 94px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+  [data-parallax], .lifestyle__bg, .hero__photo, .hero__content, .hero__cans .can-wrap { transform: none !important; }
+}
