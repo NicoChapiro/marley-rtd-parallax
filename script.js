@@ -71,7 +71,8 @@ function updateParallax() {
 
   parallaxItems.forEach((el) => {
     const rawSpeed = Number(el.dataset.speed || 0);
-    const speed = isDesktop ? rawSpeed : rawSpeed * 0.28;
+    const mobileHeroCan = !isDesktop && el.closest('.hero__cans');
+    const speed = mobileHeroCan ? 0 : (isDesktop ? rawSpeed : rawSpeed * 0.28);
     const rect = el.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
     const y = distance * speed * -0.24;

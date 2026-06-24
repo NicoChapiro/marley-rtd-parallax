@@ -883,3 +883,128 @@ h2 {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
   [data-parallax], .lifestyle__bg, .hero__photo, .hero__content { transform: none !important; }
 }
+
+/* PR #8 mobile hero product-group correction. */
+@media (max-width: 540px) {
+  .hero {
+    padding-bottom: 56px;
+  }
+
+  .badge--new {
+    margin-bottom: 22px;
+  }
+
+  .hero__cans {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: clamp(8px, 2.8vw, 14px);
+    width: min(100%, 25.5rem);
+    min-height: auto;
+    margin: 24px auto 0;
+    padding: 18px 4px 10px;
+    overflow: visible;
+  }
+
+  .hero__cans::before {
+    inset: 30% 2% 0;
+    border-radius: 999px;
+  }
+
+  .hero__cans::after {
+    left: 4%;
+    right: 4%;
+    bottom: 0;
+    height: 34%;
+  }
+
+  .hero__cans .can-wrap,
+  .hero__cans .can-wrap--cap,
+  .hero__cans .can-wrap--car,
+  .hero__cans .can-wrap--van {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    flex: 0 0 auto;
+    transform: none !important;
+  }
+
+  .hero__cans .can-wrap--cap,
+  .hero__cans .can-wrap--van {
+    z-index: 1;
+  }
+
+  .hero__cans .can-wrap--car {
+    z-index: 2;
+    margin-inline: -2px;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: clamp(98px, 29vw, 126px);
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: clamp(108px, 32vw, 138px);
+  }
+}
+
+@media (max-width: 430px) {
+  .hero__cans {
+    width: 100%;
+    gap: clamp(5px, 2vw, 10px);
+    margin-top: 22px;
+    padding-top: 16px;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: clamp(92px, 28vw, 118px);
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: clamp(102px, 31vw, 130px);
+  }
+}
+
+@media (max-width: 375px) {
+  .hero__cans {
+    gap: 4px;
+    margin-top: 20px;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: clamp(86px, 28vw, 104px);
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: clamp(96px, 31vw, 116px);
+  }
+}
+
+@media (max-width: 340px) {
+  .hero__cans {
+    gap: 2px;
+    padding-inline: 0;
+  }
+
+  .hero__cans .can--hero,
+  .hero__cans .can-wrap::before {
+    width: 84px;
+  }
+
+  .hero__cans .can-wrap--car .can--hero,
+  .hero__cans .can-wrap--car::before {
+    width: 94px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+  [data-parallax], .lifestyle__bg, .hero__photo, .hero__content, .hero__cans .can-wrap { transform: none !important; }
+}
