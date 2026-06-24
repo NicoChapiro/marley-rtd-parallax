@@ -164,23 +164,22 @@ if (!reduceMotion) {
   function setStaticState() {
     if (bg) bg.style.transform = "translate3d(0,0,0) scale(1.06)";
     if (rock) rock.style.transform = "translate3d(0,0,0) scale(1)";
+
     cans.forEach((can) => {
       if (desktopQuery.matches) {
         can.style.transform = "";
+      } else if (can.classList.contains("hero-can--car")) {
+        can.style.transform = "translateX(-50%)";
       } else {
-        if (can.classList.contains("hero-can--car")) {
-          can.style.transform = "translateX(-50%)";
-        } else {
-          can.style.transform = "none";
-        }
+        can.style.transform = "none";
       }
     });
   }
 
   function handlePointerMove(event) {
     const rect = hero.getBoundingClientRect();
-    pointerX = ((event.clientX - rect.left) / rect.width - 0.5);
-    pointerY = ((event.clientY - rect.top) / rect.height - 0.5);
+    pointerX = (event.clientX - rect.left) / rect.width - 0.5;
+    pointerY = (event.clientY - rect.top) / rect.height - 0.5;
   }
 
   function render() {

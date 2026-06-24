@@ -1393,8 +1393,8 @@ h2 {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(5, 8, 12, 0.18) 0%, rgba(5, 8, 12, 0.1) 30%, rgba(5, 8, 12, 0.55) 100%),
-    linear-gradient(180deg, rgba(8, 11, 16, 0.05) 0%, rgba(8, 11, 16, 0.12) 50%, rgba(8, 11, 16, 0.45) 100%);
+    linear-gradient(90deg, rgba(5, 8, 12, 0.28) 0%, rgba(5, 8, 12, 0.12) 42%, rgba(5, 8, 12, 0.46) 100%),
+    linear-gradient(180deg, rgba(8, 11, 16, 0.04) 0%, rgba(8, 11, 16, 0.12) 50%, rgba(8, 11, 16, 0.36) 100%);
   pointer-events: none;
 }
 
@@ -1409,18 +1409,19 @@ h2 {
 }
 
 .hero__layer--bg {
+  z-index: 0;
   object-fit: cover;
   object-position: center center;
   transform: scale(1.06);
 }
 
 .hero__layer--rock {
+  z-index: 1;
   object-fit: cover;
   object-position: center bottom;
-  z-index: 1;
 }
 
-.container {
+.hero--mountain .container {
   width: min(1180px, calc(100% - 48px));
   margin-inline: auto;
 }
@@ -1432,8 +1433,8 @@ h2 {
   display: grid;
   grid-template-columns: minmax(320px, 520px) 1fr;
   align-items: center;
-  gap: clamp(24px, 4vw, 72px);
-  padding: 112px 0 72px;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 104px 0 48px;
 }
 
 .hero__copy {
@@ -1529,10 +1530,12 @@ h2 {
   box-shadow:
     0 12px 32px rgba(243, 196, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  margin-top: 0;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.button--primary.hero__cta:hover {
+.button--primary.hero__cta:hover,
+.button--primary.hero__cta:focus-visible {
   transform: translateY(-2px);
   box-shadow:
     0 18px 38px rgba(243, 196, 0, 0.28),
@@ -1541,37 +1544,43 @@ h2 {
 
 .hero__stage {
   position: relative;
-  min-height: 620px;
+  min-height: clamp(560px, 52vw, 650px);
 }
 
 .hero-can {
   position: absolute;
+  margin: 0;
   will-change: transform;
   filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
 }
 
 .hero-can .can--hero {
+  position: relative;
   display: block;
   width: 100%;
+  max-width: none;
   height: auto;
+  max-height: none;
+  object-fit: contain;
+  opacity: 1;
 }
 
 .hero-can--cap {
-  width: clamp(125px, 14vw, 170px);
-  left: 8%;
-  bottom: 112px;
+  width: clamp(142px, 15vw, 188px);
+  left: 7%;
+  bottom: clamp(54px, 6vw, 78px);
 }
 
 .hero-can--car {
-  width: clamp(142px, 16vw, 188px);
-  left: 38%;
-  bottom: 150px;
+  width: clamp(164px, 17.5vw, 214px);
+  left: 37%;
+  bottom: clamp(82px, 7.5vw, 112px);
 }
 
 .hero-can--van {
-  width: clamp(125px, 14vw, 170px);
+  width: clamp(142px, 15vw, 188px);
   right: 3%;
-  bottom: 105px;
+  bottom: clamp(50px, 5.8vw, 74px);
 }
 
 .rasta-stripe--hero {
@@ -1602,7 +1611,6 @@ h2 {
   background: linear-gradient(180deg, rgba(6, 8, 11, 0) 0%, rgba(6, 8, 11, 0.08) 55%, rgba(6, 8, 11, 0.24) 100%);
 }
 
-/* Responsive */
 @media (max-width: 991px) {
   .hero--mountain {
     min-height: auto;
@@ -1610,8 +1618,8 @@ h2 {
 
   .hero__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 92px 0 44px;
+    gap: 12px;
+    padding: 78px 0 28px;
   }
 
   .hero__copy {
@@ -1625,10 +1633,10 @@ h2 {
   }
 
   .hero__stage {
-    min-height: 260px;
+    min-height: clamp(220px, 58vw, 300px);
     width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
+    max-width: 430px;
+    margin: -2px auto 0;
   }
 
   .hero-can {
@@ -1642,29 +1650,29 @@ h2 {
   }
 
   .hero-can--cap {
-    width: clamp(90px, 24vw, 118px);
-    left: 2%;
+    width: clamp(96px, 26vw, 130px);
+    left: 3%;
   }
 
   .hero-can--car {
-    width: clamp(98px, 27vw, 132px);
+    width: clamp(110px, 30vw, 148px);
     left: 50%;
     transform: translateX(-50%) !important;
   }
 
   .hero-can--van {
-    width: clamp(90px, 24vw, 118px);
-    right: 2%;
+    width: clamp(96px, 26vw, 130px);
+    right: 3%;
   }
 }
 
 @media (max-width: 640px) {
-  .container {
+  .hero--mountain .container {
     width: min(100% - 24px, 100%);
   }
 
   .hero__grid {
-    padding: 76px 0 34px;
+    padding: 64px 0 24px;
   }
 
   .hero__title {
@@ -1688,8 +1696,8 @@ h2 {
   }
 
   .hero__stage {
-    max-width: 360px;
-    min-height: 230px;
+    max-width: 370px;
+    min-height: clamp(205px, 60vw, 246px);
   }
 }
 
