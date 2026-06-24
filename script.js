@@ -2,7 +2,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 const desktopQuery = window.matchMedia('(min-width: 900px)');
 const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
 parallaxItems.forEach((el) => {
-  el.dataset.baseTransform = getComputedStyle(el).transform === 'none' ? '' : getComputedStyle(el).transform;
+  if (!el.dataset.baseTransform) {
+    el.dataset.baseTransform = getComputedStyle(el).transform === 'none' ? '' : getComputedStyle(el).transform;
+  }
 });
 const progressSections = [...document.querySelectorAll('.hero, .lifestyle')];
 let ticking = false;
@@ -63,7 +65,8 @@ function getDepthTransform(el) {
   const section = el.closest('.hero, .lifestyle');
   const progress = Number(section?.style.getPropertyValue('--scroll-progress') || 0);
 
-  if (el.classList.contains('hero__photo')) return `scale(${1.045 + progress * 0.035})`;
+  if (el.classList.contains('hero__photo')) return `scale(${1.08 + progress * 0.025})`;
+  if (el.classList.contains('hero__rocks')) return `scale(${1.02 + progress * 0.01})`;
   if (el.classList.contains('lifestyle__bg')) return `scale(${1.055 + progress * 0.075})`;
 
   return el.dataset.baseTransform || '';
@@ -140,6 +143,111 @@ if (!reduceMotion) {
   document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
   document.querySelectorAll('[data-step]').forEach((step) => step.classList.add('is-active'));
 }
+
+(function () {
+  const hero = document.querySelector(".hero--mountain");
+  if (!hero) return;
+
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const desktopQuery = window.matchMedia("(min-width: 992px)");
+
+  const bg = hero.querySelector(".hero__layer--bg");
+  const rock = hero.querySelector(".hero__layer--rock");
+  const cans = Array.from(hero.querySelectorAll(".hero-can"));
+
+  let pointerX = 0;
+  let pointerY = 0;
+  let smoothX = 0;
+  let smoothY = 0;
+  let rafId = null;
+
+  function setStaticState() {
+    if (bg) bg.style.transform = "translate3d(0,0,0) scale(1.06)";
+    if (rock) rock.style.transform = "translate3d(0,0,0) scale(1)";
+    cans.forEach((can) => {
+      if (desktopQuery.matches) {
+        can.style.transform = "";
+      } else {
+        if (can.classList.contains("hero-can--car")) {
+          can.style.transform = "translateX(-50%)";
+        } else {
+          can.style.transform = "none";
+        }
+      }
+    });
+  }
+
+  function handlePointerMove(event) {
+    const rect = hero.getBoundingClientRect();
+    pointerX = ((event.clientX - rect.left) / rect.width - 0.5);
+    pointerY = ((event.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function render() {
+    if (reducedMotionQuery.matches || !desktopQuery.matches) {
+      setStaticState();
+      rafId = null;
+      return;
+    }
+
+    const rect = hero.getBoundingClientRect();
+    const scrollProgress = Math.min(
+      1,
+      Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight + rect.height))
+    );
+
+    smoothX += (pointerX - smoothX) * 0.08;
+    smoothY += (pointerY - smoothY) * 0.08;
+
+    if (bg) {
+      bg.style.transform =
+        `translate3d(${smoothX * 18}px, ${smoothY * 12 + scrollProgress * 18}px, 0) scale(1.06)`;
+    }
+
+    if (rock) {
+      rock.style.transform =
+        `translate3d(${smoothX * 8}px, ${smoothY * 5 + scrollProgress * 10}px, 0) scale(1.01)`;
+    }
+
+    cans.forEach((can, index) => {
+      const depth = parseFloat(can.dataset.depth || "0.15");
+      const lift = 8 + index * 4;
+      const x = smoothX * depth * 90;
+      const y = smoothY * depth * 68 - scrollProgress * lift;
+      can.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+
+    rafId = window.requestAnimationFrame(render);
+  }
+
+  function stopLoop() {
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function startLoop() {
+    stopLoop();
+    setStaticState();
+
+    if (reducedMotionQuery.matches || !desktopQuery.matches) return;
+
+    hero.addEventListener("pointermove", handlePointerMove, { passive: true });
+    rafId = window.requestAnimationFrame(render);
+  }
+
+  function resetListeners() {
+    hero.removeEventListener("pointermove", handlePointerMove);
+    startLoop();
+  }
+
+  resetListeners();
+
+  window.addEventListener("resize", resetListeners, { passive: true });
+  reducedMotionQuery.addEventListener("change", resetListeners);
+  desktopQuery.addEventListener("change", resetListeners);
+})();
 
 // Upload final campaign assets manually to ./assets/rtd/ using the names documented in README.md.
 // Adjust parallax by editing data-speed and data-mouse attributes in index.html.
