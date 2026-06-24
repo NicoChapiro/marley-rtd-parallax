@@ -24,11 +24,11 @@ Checklist aplicado:
 2. En GitHub, abre **Settings → Pages**.
 3. En **Build and deployment**, selecciona **Deploy from a branch**.
 4. Elige la rama **main**.
-5. Elige la carpeta **/root**.
+5. En **Folder**, elige **/ (root)** / repository root.
 6. Guarda la configuración y espera a que GitHub Pages publique el sitio.
 7. Abre la URL publicada con el formato `https://USUARIO.github.io/REPO/` y verifica que carguen estilos, JavaScript y placeholders/imagenes.
 
-> Nota: en la interfaz de GitHub Pages, la carpeta raíz puede mostrarse como `/ (root)`. Selecciona esa opción para publicar desde la raíz del repositorio.
+> Nota: usa siempre **Folder: `/ (root)` / repository root**. Esta opción corresponde a la raíz del repositorio, no a una carpeta adicional.
 
 ## Estructura
 
