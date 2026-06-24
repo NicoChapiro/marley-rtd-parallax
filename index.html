@@ -9,55 +9,73 @@
   </head>
   <body>
     <main class="rtd-page" data-parallax-root>
-      <section class="hero section" aria-labelledby="hero-title">
-        <div class="asset-bg hero__photo" data-bg-src="./assets/rtd/rtd-lifestyle-bg.jpg" aria-hidden="true"></div>
-        <div class="texture texture--kraft asset-bg" data-bg-src="./assets/rtd/kraft-texture.jpg" data-parallax data-speed="-0.06" aria-hidden="true"></div>
-        <span class="rasta rasta--hero asset-bg" data-bg-src="./assets/rtd/rasta-ribbon.png" data-parallax data-speed="0.08" aria-hidden="true"></span>
-        <span class="decor decor--beans asset-bg" data-bg-src="./assets/rtd/beans-cluster.png" data-parallax data-speed="0.18" aria-hidden="true"></span>
-        <span class="decor decor--leaf-left asset-bg" data-bg-src="./assets/rtd/leaf-left.png" data-parallax data-speed="0.1" aria-hidden="true"></span>
-        <span class="decor decor--leaf-right asset-bg" data-bg-src="./assets/rtd/leaf-right.png" data-parallax data-speed="0.14" aria-hidden="true"></span>
+      <section class="hero section reveal" aria-labelledby="hero-title" style="--section-accent: var(--gold)">
+        <div class="asset-bg hero__photo" data-bg-src="./assets/rtd/hero-mountain-bg.jpg" data-parallax data-speed="-0.08" aria-hidden="true"></div>
+        <div class="hero__frost" data-parallax data-speed="0.05" aria-hidden="true"></div>
+        <div class="hero__rocks" data-parallax data-speed="0.28" aria-hidden="true"></div>
+        <span class="badge badge--new" data-parallax data-speed="0.12">Nuevo</span>
 
-        <div class="hero__content">
-          <p class="eyebrow">Ready to Drink</p>
-          <h1 id="hero-title">Listos para seguir tu ritmo</h1>
-          <p class="lead">Café Marley Coffee listo para tomar: cremoso, frío y con buena vibra para acompañarte donde la vida te lleve.</p>
+        <div class="hero__content" data-parallax data-speed="0.04">
+          <p class="hero__kicker">Café frío en lata</p>
+          <h1 id="hero-title">Marley Coffee</h1>
+          <p class="hero__flavours">Cappuccino / Caramel / Vainilla</p>
           <a class="button" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Comprar ahora</a>
         </div>
 
         <div class="hero__cans" aria-label="Sabores Ready to Drink Marley Coffee">
-          <figure class="can-wrap can-wrap--cap" data-parallax data-speed="0.2" data-mouse="-10"><img class="can can--hero" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Marley Coffee Ready to Drink Cappuccino 250 ml" /></figure>
-          <figure class="can-wrap can-wrap--van" data-parallax data-speed="0.27" data-mouse="14"><img class="can can--hero" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Ready to Drink Vainilla Latte 250 ml" /></figure>
+          <figure class="can-wrap can-wrap--cap" data-parallax data-speed="0.22" data-mouse="-10"><img class="can can--hero" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Marley Coffee Ready to Drink Cappuccino 250 ml" /></figure>
           <figure class="can-wrap can-wrap--car" data-parallax data-speed="0.16" data-mouse="8"><img class="can can--hero" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Ready to Drink Caramel 250 ml" /></figure>
+          <figure class="can-wrap can-wrap--van" data-parallax data-speed="0.27" data-mouse="14"><img class="can can--hero" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Ready to Drink Vainilla Latte 250 ml" /></figure>
         </div>
+        <span class="rasta-stripe rasta-stripe--hero" aria-hidden="true"></span>
       </section>
 
-      <section class="flavour flavour--cappuccino section" aria-labelledby="cap-title">
-        <div class="flavour__visual"><span class="decor decor--beans-small asset-bg" data-bg-src="./assets/rtd/beans-cluster.png" data-parallax data-speed="0.16" aria-hidden="true"></span><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.24" data-mouse="10"><img class="can can--single" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Cappuccino Ready to Drink 250 ml" loading="lazy" /></figure></div>
-        <div class="flavour__copy"><p class="eyebrow">250 ml</p><h2 id="cap-title">Cappuccino</h2><h3>Cremoso y equilibrado</h3><p>Una pausa clásica, lista para acompañarte donde vayas.</p></div>
-      </section>
-
-      <section class="flavour flavour--vanilla section" aria-labelledby="van-title">
-        <div class="flavour__copy"><p class="eyebrow">250 ml</p><h2 id="van-title">Vainilla Latte</h2><h3>Suave y envolvente</h3><p>Un toque dulce y cremoso para seguir tu ritmo con buena vibra.</p></div>
-        <div class="flavour__visual"><span class="decor decor--flower asset-bg" data-bg-src="./assets/rtd/vanilla-flower.png" data-parallax data-speed="0.14" aria-hidden="true"></span><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.22" data-mouse="-10"><img class="can can--single" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Vainilla Latte Ready to Drink 250 ml" loading="lazy" /></figure></div>
-      </section>
-
-      <section class="flavour flavour--caramel section" aria-labelledby="car-title">
-        <div class="flavour__visual"><span class="decor decor--splash asset-bg" data-bg-src="./assets/rtd/caramel-splash.png" data-parallax data-speed="0.12" aria-hidden="true"></span><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.25" data-mouse="12"><img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Caramel Ready to Drink 250 ml" loading="lazy" /></figure></div>
-        <div class="flavour__copy"><p class="eyebrow">250 ml</p><h2 id="car-title">Caramel</h2><h3>Dulce con actitud</h3><p>Café listo para tomar con notas de caramelo y energía positiva.</p></div>
-      </section>
-
-      <section class="benefits section" aria-labelledby="benefits-title">
-        <p class="eyebrow">Por qué elegirlos</p><h2 id="benefits-title">Ready to Drink, ready for life</h2>
-        <div class="benefits__grid">
-          <article><span>↯</span><h3>Listo para tomar</h3></article><article><span>250</span><h3>Formato 250 ml</h3></article><article><span>Ⅲ</span><h3>Tres sabores</h3></article><article><span>→</span><h3>Ideal para llevar</h3></article>
+      <section class="ritual section reveal" aria-labelledby="ritual-title">
+        <span class="rasta-tabs" aria-hidden="true"></span>
+        <div class="asset-bg ice ice--back" data-bg-src="./assets/rtd/ice-splash.png" data-parallax data-speed="0.1" aria-hidden="true"></div>
+        <div class="asset-bg ice ice--front" data-bg-src="./assets/rtd/ice-foreground.png" data-parallax data-speed="0.24" aria-hidden="true"></div>
+        <figure class="can-wrap can-wrap--ritual" data-parallax data-speed="0.2" data-mouse="10"><img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Caramel sobre hielo" loading="lazy" /></figure>
+        <div class="ritual__copy">
+          <p class="eyebrow">No le des más vueltas</p>
+          <h2 id="ritual-title"><span data-step>Agita</span>, <span data-step>abre</span> y <span data-step>disfruta</span></h2>
+          <p class="ritual__flavours">3 sabores: Vainilla / Caramel / Cappuccino</p>
         </div>
+        <span class="rasta-stripe rasta-stripe--bottom" aria-hidden="true"></span>
       </section>
 
-      <section class="final-cta section" aria-labelledby="final-title">
-        <span class="rasta rasta--final asset-bg" data-bg-src="./assets/rtd/rasta-ribbon.png" aria-hidden="true"></span>
-        <h2 id="final-title">Lleva el ritmo contigo</h2>
-        <p>Descubre los tres sabores de Marley Coffee Ready to Drink y elige tu próxima pausa.</p>
-        <a class="button" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Comprar Ready to Drink</a>
+      <section class="flavour flavour--vanilla section reveal" aria-labelledby="van-title" style="--section-accent: #ead7a4; --section-glow: rgba(234, 215, 164, .28)">
+        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="van-title">Vanilla Latte</h2><p>Elaborada a partir de café filtrado con notas de vainilla, generando una mezcla equilibrada e irresistible.</p></div>
+        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.23" data-mouse="-8"><img class="can can--single" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Vanilla Latte" loading="lazy" /></figure></div>
+      </section>
+
+      <section class="flavour flavour--cappuccino section reveal" aria-labelledby="cap-title" style="--section-accent: #9b6a45; --section-glow: rgba(120, 76, 43, .36)">
+        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.25" data-mouse="8"><img class="can can--single" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Marley Coffee Cappuccino" loading="lazy" /></figure></div>
+        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="cap-title">Cappuccino</h2><p>Elaborada a partir de café filtrado. Es la bebida perfecta para seguirte el ritmo.</p></div>
+      </section>
+
+      <section class="flavour flavour--caramel section reveal" aria-labelledby="car-title" style="--section-accent: #d8891f; --section-glow: rgba(216, 137, 31, .36)">
+        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="car-title">Caramel</h2><p>Elaborada a partir de café filtrado. Combina el irresistible sabor del caramelo con la intensidad del café.</p></div>
+        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.22" data-mouse="10"><img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Caramel" loading="lazy" /></figure></div>
+      </section>
+
+      <section class="lifestyle section reveal" aria-labelledby="life-title">
+        <div class="asset-bg lifestyle__bg" data-bg-src="./assets/rtd/lifestyle-caramel.jpg" data-parallax data-speed="-0.06" aria-hidden="true"></div>
+        <div class="lifestyle__copy"><h2 id="life-title">Tu café frío, donde vayas</h2><p>Una lata lista para acompañar tu ritmo.</p></div>
+        <figure class="can-wrap can-wrap--life" data-parallax data-speed="0.2" data-mouse="8"><img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Caramel para llevar" loading="lazy" /></figure>
+      </section>
+
+      <section class="closing section reveal" aria-labelledby="closing-title">
+        <span class="rasta-stripe rasta-stripe--top" aria-hidden="true"></span>
+        <div class="closing__labels" aria-label="Beneficios Ready to Drink">
+          <!-- Claims must be legally and nutritionally validated before production if they are not already approved. -->
+          <span>Sin sellos</span><span>7 ingredientes</span><span>Apto para deportistas</span><span>Equivalente a 1 espresso</span>
+        </div>
+        <div class="closing__group" aria-label="Tres latas Marley Coffee Ready to Drink">
+          <figure class="can-wrap can-wrap--group can-wrap--group-van" data-parallax data-speed="0.18"><img class="can can--hero" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Vanilla Latte" loading="lazy" /></figure>
+          <figure class="can-wrap can-wrap--group can-wrap--group-cap" data-parallax data-speed="0.24"><img class="can can--hero" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Cappuccino" loading="lazy" /></figure>
+          <figure class="can-wrap can-wrap--group can-wrap--group-car" data-parallax data-speed="0.2"><img class="can can--hero" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Caramel" loading="lazy" /></figure>
+        </div>
+        <div class="closing__cta"><h2 id="closing-title">Ready to Drink</h2><a class="button button--dark" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Comprar Ready to Drink</a></div>
       </section>
     </main>
     <script src="./script.js" defer></script>
