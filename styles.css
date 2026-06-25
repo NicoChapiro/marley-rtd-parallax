@@ -1675,3 +1675,27 @@ p {
 .ritual .rasta-stripe--bottom {
   z-index: 6;
 }
+
+/* Compact Ritual campaign block height adjustment. */
+.ritual.section {
+  min-height: auto;
+  height: auto;
+  padding-top: clamp(48px, 5vw, 72px);
+  padding-bottom: clamp(48px, 5vw, 72px);
+}
+
+.ritual__visual {
+  min-height: clamp(420px, 48vw, 620px);
+}
+
+@media (max-width: 767px) {
+  .ritual.section {
+    min-height: auto;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .ritual__visual {
+    min-height: clamp(360px, 92vw, 460px);
+  }
+}
