@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Marley Festivo";
   src: url("./assets/fonts/FestivoLettersNo1-Regular.otf") format("opentype");
-  font-weight: 400 900;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -1744,11 +1744,18 @@ h2 {
 h1,
 h2,
 .hero__title,
-.flavour h2,
 .ritual h2,
+.flavour h2,
 .lifestyle h2,
 .closing h2 {
   font-family: var(--font-title);
+  font-weight: 400;
+}
+
+body,
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .hero__eyebrow,
@@ -1760,9 +1767,4 @@ h2,
 .hero__badge {
   font-family: var(--font-subtitle);
   font-weight: 700;
-}
-
-p {
-  font-family: var(--font-body);
-  font-weight: 400;
 }
