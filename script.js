@@ -10,6 +10,8 @@ const progressSections = [...document.querySelectorAll('.hero, .lifestyle')];
 let ticking = false;
 let mouseX = 0;
 let mouseY = 0;
+let smoothMouseX = 0;
+let smoothMouseY = 0;
 
 function loadImage(path, onLoad) {
   if (!path) return;
@@ -67,6 +69,8 @@ function getDepthTransform(el) {
 
   if (el.classList.contains('lifestyle__bg')) return `scale(${1.055 + progress * 0.075})`;
 
+  if (!desktopQuery.matches && el.dataset.mobileBaseTransform) return el.dataset.mobileBaseTransform;
+
   return el.dataset.baseTransform || '';
 }
 
@@ -74,17 +78,19 @@ function updateParallax() {
   updateSectionProgress();
   const viewportCenter = window.innerHeight / 2;
   const isDesktop = desktopQuery.matches;
+  smoothMouseX += ((isDesktop ? mouseX : 0) - smoothMouseX) * 0.35;
+  smoothMouseY += ((isDesktop ? mouseY : 0) - smoothMouseY) * 0.35;
 
   parallaxItems.forEach((el) => {
 
     const rawSpeed = Number(el.dataset.speed || 0);
-    const speed = isDesktop ? rawSpeed : rawSpeed * 0.28;
+    const speed = isDesktop ? rawSpeed : rawSpeed * 0.4;
     const rect = el.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
     const y = distance * speed * -0.24;
     const mouse = isDesktop ? Number(el.dataset.mouse || 0) : 0;
-    const x = mouseX * mouse;
-    const my = mouseY * mouse * 0.6;
+    const x = smoothMouseX * mouse;
+    const my = smoothMouseY * mouse * 0.6;
     const baseTransform = getDepthTransform(el);
     el.style.transform = `translate3d(${x}px, ${y + my}px, 0) ${baseTransform}`;
   });
