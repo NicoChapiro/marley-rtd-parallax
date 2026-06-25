@@ -31,6 +31,18 @@ Configura el proyecto en Vercel con estos valores:
 
 Do not type `none` into Vercel command fields. Leave Build Command and Install Command empty so Vercel skips those steps for this static HTML/CSS/JS site.
 
+## Tipografías oficiales
+
+Los archivos de tipografía oficial deben subirse manualmente a `./assets/fonts/`. Codex no debe agregar archivos binarios de fuentes salvo aprobación explícita.
+
+Archivos esperados:
+
+- `FestivoLettersNo1-Regular.otf`
+- `GT-Pressura-Mono-Regular.otf`
+- `GT-Pressura-Mono-Bold.otf`
+
+Si las fuentes no están disponibles, el sitio usa fallbacks de Helvetica / Arial Black / Courier New para mantener la landing funcional. Después de subir las fuentes, repite el QA en desktop y mobile porque las métricas de fuente pueden cambiar el layout.
+
 ## QA antes de mergear
 
 Revisa la URL de Vercel Preview antes de mergear a `main`:
