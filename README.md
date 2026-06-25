@@ -38,7 +38,7 @@ Los archivos de tipografía oficial deben subirse manualmente a `./assets/fonts/
 Archivos esperados:
 
 - `FestivoLettersNo1-Regular.otf`
-- `GT-Pressura-Mono-Regular.otf`
+- `GT-Pressura-Mono.otf`
 - `GT-Pressura-Mono-Bold.otf`
 
 Si las fuentes no cargan, revisa DevTools → Network → Font para detectar errores 404 o nombres de archivo incorrectos. Si las fuentes no están disponibles, el sitio usa fallbacks de Helvetica / Arial Black / Courier New para mantener la landing funcional. Después de subir las fuentes, repite el QA en desktop y mobile porque las métricas de fuente pueden cambiar el layout.
