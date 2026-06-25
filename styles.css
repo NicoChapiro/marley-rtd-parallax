@@ -1478,3 +1478,60 @@ p {
     padding-top: 92px;
   }
 }
+
+/* Section 2 ice splash composition: keep splash attached to the can artwork. */
+.ice--back {
+  display: none;
+}
+
+.can-wrap--ritual {
+  overflow: visible;
+}
+
+.can-wrap--ritual .can--single {
+  z-index: 2;
+}
+
+.ritual__splash {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(-26px, -3vw, -14px);
+  z-index: 1;
+  width: min(44vw, 460px);
+  max-width: 140%;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, .38));
+}
+
+.ritual__splash.is-loaded {
+  opacity: .82;
+}
+
+@media (max-width: 900px) {
+  .can-wrap--ritual {
+    justify-self: center;
+    margin-bottom: clamp(8px, 3vw, 20px);
+  }
+
+  .ritual__splash {
+    bottom: clamp(-18px, -2.8vw, -8px);
+    width: min(70vw, 330px);
+    max-width: 128%;
+    opacity: 0;
+  }
+
+  .ritual__splash.is-loaded {
+    opacity: .74;
+  }
+}
+
+@media (max-width: 540px) {
+  .ritual__splash {
+    bottom: -10px;
+    width: min(74vw, 250px);
+    max-width: 118%;
+  }
+}
