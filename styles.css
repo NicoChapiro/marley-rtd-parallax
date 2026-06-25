@@ -1454,3 +1454,27 @@ p {
     padding-top: max(56px, env(safe-area-inset-top));
   }
 }
+
+/* Pin the campaign badge higher without moving the hero products or rock composition. */
+.hero--mountain .hero__badge {
+  position: absolute;
+  top: max(28px, calc(env(safe-area-inset-top) + 22px));
+  left: 0;
+  margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  .hero--mountain .hero__copy {
+    padding-top: 112px;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero--mountain .hero__badge {
+    top: max(18px, calc(env(safe-area-inset-top) + 14px));
+  }
+
+  .hero--mountain .hero__copy {
+    padding-top: 92px;
+  }
+}
