@@ -1483,8 +1483,8 @@ p {
 .ritual__visual {
   position: relative;
   z-index: 2;
-  width: min(48vw, 650px);
-  min-height: clamp(520px, 48vw, 690px);
+  width: min(54vw, 760px);
+  min-height: clamp(560px, 52vw, 720px);
   justify-self: center;
   overflow: visible;
   contain: layout;
@@ -1492,32 +1492,33 @@ p {
 
 .ritual__ice-splash {
   position: absolute;
-  left: 50%;
-  top: 58%;
+  left: 34%;
+  top: 50%;
   z-index: 1;
-  width: min(52vw, 660px);
-  max-width: 112%;
+  width: min(72vw, 1080px);
+  max-width: none;
   height: auto;
+  opacity: .96;
   pointer-events: none;
-  transform: translate(-50%, -48%);
-  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, .42));
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 30px 38px rgba(0, 0, 0, .42));
   will-change: transform;
 }
 
 .ritual-can {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   place-items: center;
   margin: 0;
-  filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .56));
+  filter: drop-shadow(0 28px 28px rgba(0, 0, 0, .52));
   will-change: transform;
 }
 
 .ritual-can .can--single {
   position: relative;
-  width: clamp(170px, 17vw, 310px);
-  max-height: 62vh;
+  width: clamp(120px, 10vw, 170px);
+  max-height: 48vh;
   opacity: 0;
 }
 
@@ -1526,93 +1527,116 @@ p {
 }
 
 .ritual-can--cap {
-  left: 4%;
-  top: 18%;
-  transform: rotate(14deg);
+  left: 10%;
+  top: 20%;
+  transform: rotate(-10deg);
 }
 
 .ritual-can--van {
-  right: 1%;
-  top: 8%;
+  left: 43%;
+  top: 34%;
   z-index: 3;
-  transform: rotate(-17deg);
+  transform: rotate(12deg);
 }
 
 .ritual-can--car {
-  left: 33%;
-  bottom: 5%;
+  left: 28%;
+  top: 28%;
   z-index: 4;
-  transform: rotate(28deg);
+  transform: rotate(-16deg);
+}
+
+.ritual-can--car .can--single {
+  width: clamp(130px, 11vw, 185px);
+}
+
+.ritual__copy {
+  z-index: 5;
 }
 
 @media (max-width: 900px) {
   .ritual__visual {
     width: min(100%, 560px);
-    min-height: clamp(430px, 78vw, 560px);
-    order: 1;
-  }
-
-  .ritual__copy {
+    min-height: clamp(340px, 72vw, 500px);
     order: 2;
   }
 
+  .ritual__copy {
+    order: 1;
+  }
+
   .ritual__ice-splash {
+    left: 50%;
     top: 56%;
-    width: min(92vw, 520px);
-    max-width: 100%;
+    width: min(104vw, 560px);
+    max-width: none;
+    opacity: .82;
   }
 
   .ritual-can .can--single {
-    width: clamp(128px, 28vw, 220px);
-    max-height: 44vh;
+    width: clamp(72px, 26vw, 112px);
+    max-height: 34vh;
+  }
+
+  .ritual-can--car .can--single {
+    width: clamp(82px, 28vw, 124px);
   }
 
   .ritual-can--cap {
-    left: 8%;
-    top: 20%;
-    transform: rotate(8deg);
+    left: 14%;
+    top: 23%;
+    transform: rotate(-7deg);
   }
 
   .ritual-can--van {
-    right: 7%;
-    top: 14%;
-    transform: rotate(-10deg);
+    left: 58%;
+    top: 30%;
+    transform: rotate(8deg);
   }
 
   .ritual-can--car {
     left: 36%;
-    bottom: 8%;
-    transform: rotate(14deg);
+    top: 40%;
+    transform: rotate(-10deg);
   }
 }
 
 @media (max-width: 540px) {
   .ritual__visual {
-    min-height: clamp(330px, 92vw, 430px);
+    min-height: clamp(285px, 86vw, 370px);
   }
 
   .ritual__ice-splash {
-    top: 57%;
-    width: min(96vw, 390px);
-  }
-
-  .ritual-can .can--single {
-    width: clamp(92px, 30vw, 150px);
+    width: min(112vw, 430px);
   }
 
   .ritual-can--cap {
-    left: 5%;
-    top: 24%;
+    left: 9%;
+    top: 23%;
   }
 
   .ritual-can--van {
-    right: 4%;
-    top: 18%;
+    left: 59%;
+    top: 31%;
   }
 
   .ritual-can--car {
     left: 34%;
-    bottom: 10%;
+    top: 42%;
+  }
+}
+
+@media (max-width: 360px) {
+  .ritual__visual {
+    min-height: 270px;
+  }
+
+  .ritual-can .can--single {
+    width: clamp(68px, 25vw, 96px);
+  }
+
+  .ritual-can--car .can--single {
+    width: clamp(76px, 27vw, 108px);
   }
 }
 
