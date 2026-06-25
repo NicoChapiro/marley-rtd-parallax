@@ -1480,9 +1480,20 @@ p {
 }
 
 /* Dynamic Ritual collage parallax pass. */
+.ritual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 70% 45%, rgba(0, 0, 0, .18), rgba(0, 0, 0, .78) 42%, rgba(0, 0, 0, .92) 72%),
+    linear-gradient(90deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .64) 58%, rgba(0, 0, 0, .92));
+}
+
 .ritual__visual {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   width: min(54vw, 760px);
   min-height: clamp(560px, 52vw, 720px);
   justify-self: center;
@@ -1492,23 +1503,22 @@ p {
 
 .ritual__ice-splash {
   position: absolute;
-  left: 27%;
-  top: 54%;
+  inset: 0;
   z-index: 1;
-  width: min(72vw, 1120px);
-  max-width: none;
-  max-height: 92%;
-  height: auto;
-  opacity: .96;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  opacity: .9;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  transform: scale(1.08);
   filter: drop-shadow(0 30px 38px rgba(0, 0, 0, .42));
   will-change: transform;
 }
 
 .ritual-can {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   display: grid;
   place-items: center;
   margin: 0;
@@ -1536,7 +1546,7 @@ p {
 .ritual-can--van {
   left: 41%;
   top: 30%;
-  z-index: 3;
+  z-index: 4;
   transform: rotate(13deg);
 }
 
@@ -1567,10 +1577,7 @@ p {
   }
 
   .ritual__ice-splash {
-    left: 50%;
-    top: 56%;
-    width: min(140%, 620px);
-    max-width: none;
+    object-position: center center;
     opacity: .82;
   }
 
@@ -1608,7 +1615,7 @@ p {
   }
 
   .ritual__ice-splash {
-    width: min(142%, 460px);
+    opacity: .78;
   }
 
   .ritual-can--cap {
@@ -1647,4 +1654,9 @@ p {
     transition: none !important;
     animation: none !important;
   }
+}
+
+.ritual .rasta-tabs,
+.ritual .rasta-stripe--bottom {
+  z-index: 6;
 }
