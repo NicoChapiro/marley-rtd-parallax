@@ -1492,11 +1492,12 @@ p {
 
 .ritual__ice-splash {
   position: absolute;
-  left: 34%;
-  top: 50%;
+  left: 27%;
+  top: 54%;
   z-index: 1;
-  width: min(72vw, 1080px);
+  width: min(72vw, 1120px);
   max-width: none;
+  max-height: 92%;
   height: auto;
   opacity: .96;
   pointer-events: none;
@@ -1517,7 +1518,7 @@ p {
 
 .ritual-can .can--single {
   position: relative;
-  width: clamp(120px, 10vw, 170px);
+  width: clamp(120px, 10vw, 165px);
   max-height: 48vh;
   opacity: 0;
 }
@@ -1527,27 +1528,27 @@ p {
 }
 
 .ritual-can--cap {
-  left: 10%;
-  top: 20%;
-  transform: rotate(-10deg);
+  left: 11%;
+  top: 26%;
+  transform: rotate(-12deg);
 }
 
 .ritual-can--van {
-  left: 43%;
-  top: 34%;
+  left: 41%;
+  top: 30%;
   z-index: 3;
-  transform: rotate(12deg);
+  transform: rotate(13deg);
 }
 
 .ritual-can--car {
   left: 28%;
-  top: 28%;
+  top: 39%;
   z-index: 4;
-  transform: rotate(-16deg);
+  transform: rotate(-15deg);
 }
 
 .ritual-can--car .can--single {
-  width: clamp(130px, 11vw, 185px);
+  width: clamp(128px, 11vw, 178px);
 }
 
 .ritual__copy {
@@ -1568,35 +1569,35 @@ p {
   .ritual__ice-splash {
     left: 50%;
     top: 56%;
-    width: min(104vw, 560px);
+    width: min(140%, 620px);
     max-width: none;
     opacity: .82;
   }
 
   .ritual-can .can--single {
-    width: clamp(72px, 26vw, 112px);
+    width: clamp(76px, 24vw, 110px);
     max-height: 34vh;
   }
 
   .ritual-can--car .can--single {
-    width: clamp(82px, 28vw, 124px);
+    width: clamp(84px, 26vw, 118px);
   }
 
   .ritual-can--cap {
-    left: 14%;
+    left: 7%;
     top: 23%;
     transform: rotate(-7deg);
   }
 
   .ritual-can--van {
-    left: 58%;
-    top: 30%;
+    left: 66%;
+    top: 28%;
     transform: rotate(8deg);
   }
 
   .ritual-can--car {
     left: 36%;
-    top: 40%;
+    top: 45%;
     transform: rotate(-10deg);
   }
 }
@@ -1607,22 +1608,22 @@ p {
   }
 
   .ritual__ice-splash {
-    width: min(112vw, 430px);
+    width: min(142%, 460px);
   }
 
   .ritual-can--cap {
-    left: 9%;
+    left: 5%;
     top: 23%;
   }
 
   .ritual-can--van {
-    left: 59%;
-    top: 31%;
+    left: 67%;
+    top: 29%;
   }
 
   .ritual-can--car {
-    left: 34%;
-    top: 42%;
+    left: 35%;
+    top: 47%;
   }
 }
 
