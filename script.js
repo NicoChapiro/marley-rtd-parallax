@@ -281,3 +281,25 @@ if (!reduceMotion) {
 
 // Upload final campaign assets manually to ./assets/rtd/ using the names documented in README.md.
 // Adjust parallax by editing data-speed and data-mouse attributes in index.html.
+
+(function () {
+  const stickyCta = document.querySelector('[data-sticky-purchase]');
+  const hero = document.querySelector('#inicio');
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+
+  if (!stickyCta || !hero) return;
+
+  function setStickyVisibility() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const shouldShow = mobileQuery.matches && heroBottom < window.innerHeight * 0.35;
+    stickyCta.classList.toggle('is-visible', shouldShow || stickyCta.matches(':focus-visible'));
+    stickyCta.tabIndex = mobileQuery.matches ? 0 : -1;
+  }
+
+  setStickyVisibility();
+  window.addEventListener('scroll', setStickyVisibility, { passive: true });
+  window.addEventListener('resize', setStickyVisibility, { passive: true });
+  stickyCta.addEventListener('focus', setStickyVisibility);
+  stickyCta.addEventListener('blur', setStickyVisibility);
+  mobileQuery.addEventListener('change', setStickyVisibility);
+})();
