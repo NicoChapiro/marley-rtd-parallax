@@ -1480,6 +1480,12 @@ p {
 }
 
 /* Dynamic Ritual collage parallax pass. */
+.ritual {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
 .ritual::before {
   content: "";
   position: absolute;
@@ -1503,16 +1509,19 @@ p {
 
 .ritual__ice-splash {
   position: absolute;
-  inset: 0;
+  left: -10%;
+  bottom: -4%;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left center;
-  opacity: .9;
+  width: min(78vw, 980px);
+  height: 118%;
+  object-fit: contain;
+  object-position: left bottom;
+  opacity: .92;
   pointer-events: none;
-  transform: scale(1.08);
+  transform: scale(1.12);
   filter: drop-shadow(0 30px 38px rgba(0, 0, 0, .42));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .08) 6%, #000 18%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .08) 6%, #000 18%, #000 100%);
   will-change: transform;
 }
 
@@ -1577,7 +1586,11 @@ p {
   }
 
   .ritual__ice-splash {
-    object-position: center center;
+    left: -18%;
+    bottom: -2%;
+    width: min(138vw, 720px);
+    height: 108%;
+    object-position: left bottom;
     opacity: .82;
   }
 
@@ -1615,6 +1628,8 @@ p {
   }
 
   .ritual__ice-splash {
+    left: -26%;
+    width: 150vw;
     opacity: .78;
   }
 
