@@ -1486,17 +1486,6 @@ p {
   isolation: isolate;
 }
 
-.ritual::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 70% 45%, rgba(0, 0, 0, .18), rgba(0, 0, 0, .78) 42%, rgba(0, 0, 0, .92) 72%),
-    linear-gradient(90deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .64) 58%, rgba(0, 0, 0, .92));
-}
-
 .ritual__visual {
   position: relative;
   z-index: 4;
@@ -1676,12 +1665,31 @@ p {
   z-index: 6;
 }
 
+.ritual::before {
+  content: none;
+  display: none;
+}
+
+.ritual__copy::before {
+  content: "";
+  position: absolute;
+  inset: -18% -12%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, .62),
+    rgba(0, 0, 0, .2) 48%,
+    transparent 72%
+  );
+}
+
 /* Compact Ritual campaign block height adjustment. */
 .ritual.section {
   min-height: auto;
   height: auto;
-  padding-top: clamp(48px, 5vw, 72px);
-  padding-bottom: clamp(48px, 5vw, 72px);
+  padding-top: clamp(36px, 4vw, 56px);
+  padding-bottom: clamp(36px, 4vw, 56px);
 }
 
 .ritual__visual {
@@ -1691,8 +1699,8 @@ p {
 @media (max-width: 767px) {
   .ritual.section {
     min-height: auto;
-    padding-top: 44px;
-    padding-bottom: 44px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .ritual__visual {
