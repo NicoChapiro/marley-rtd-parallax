@@ -1712,3 +1712,7 @@ p {
     min-height: clamp(360px, 92vw, 460px);
   }
 }
+
+.ritual .ice--front {
+  display: none;
+}
