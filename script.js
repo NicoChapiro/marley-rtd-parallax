@@ -65,8 +65,6 @@ function getDepthTransform(el) {
   const section = el.closest('.hero, .lifestyle');
   const progress = Number(section?.style.getPropertyValue('--scroll-progress') || 0);
 
-  if (el.classList.contains('hero__photo')) return `scale(${1.08 + progress * 0.025})`;
-  if (el.classList.contains('hero__rocks')) return `scale(${1.02 + progress * 0.01})`;
   if (el.classList.contains('lifestyle__bg')) return `scale(${1.055 + progress * 0.075})`;
 
   return el.dataset.baseTransform || '';
@@ -78,11 +76,6 @@ function updateParallax() {
   const isDesktop = desktopQuery.matches;
 
   parallaxItems.forEach((el) => {
-    const mobileHeroCan = !isDesktop && el.closest('.hero__cans');
-    if (mobileHeroCan) {
-      el.style.removeProperty('transform');
-      return;
-    }
 
     const rawSpeed = Number(el.dataset.speed || 0);
     const speed = isDesktop ? rawSpeed : rawSpeed * 0.28;
@@ -160,6 +153,8 @@ if (!reduceMotion) {
   let smoothX = 0;
   let smoothY = 0;
   let rafId = null;
+  let heroIsActive = false;
+  let pointerIsListening = false;
 
   function setStaticState() {
     if (bg) bg.style.transform = "translate3d(0,0,0) scale(1.06)";
@@ -176,16 +171,32 @@ if (!reduceMotion) {
     });
   }
 
+  function canAnimate() {
+    return heroIsActive && desktopQuery.matches && !reducedMotionQuery.matches;
+  }
+
   function handlePointerMove(event) {
     const rect = hero.getBoundingClientRect();
     pointerX = (event.clientX - rect.left) / rect.width - 0.5;
     pointerY = (event.clientY - rect.top) / rect.height - 0.5;
   }
 
+  function addPointerListener() {
+    if (pointerIsListening) return;
+    hero.addEventListener("pointermove", handlePointerMove, { passive: true });
+    pointerIsListening = true;
+  }
+
+  function removePointerListener() {
+    if (!pointerIsListening) return;
+    hero.removeEventListener("pointermove", handlePointerMove);
+    pointerIsListening = false;
+  }
+
   function render() {
-    if (reducedMotionQuery.matches || !desktopQuery.matches) {
+    if (!canAnimate()) {
+      stopLoop();
       setStaticState();
-      rafId = null;
       return;
     }
 
@@ -227,25 +238,45 @@ if (!reduceMotion) {
   }
 
   function startLoop() {
-    stopLoop();
-    setStaticState();
+    if (!canAnimate()) {
+      stopLoop();
+      setStaticState();
+      removePointerListener();
+      return;
+    }
 
-    if (reducedMotionQuery.matches || !desktopQuery.matches) return;
-
-    hero.addEventListener("pointermove", handlePointerMove, { passive: true });
-    rafId = window.requestAnimationFrame(render);
+    addPointerListener();
+    if (!rafId) rafId = window.requestAnimationFrame(render);
   }
 
-  function resetListeners() {
-    hero.removeEventListener("pointermove", handlePointerMove);
-    startLoop();
+  function syncParallaxState() {
+    if (canAnimate()) {
+      startLoop();
+    } else {
+      stopLoop();
+      setStaticState();
+      removePointerListener();
+    }
   }
 
-  resetListeners();
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        heroIsActive = entry.isIntersecting;
+        syncParallaxState();
+      });
+    }, { rootMargin: "120px 0px" });
 
-  window.addEventListener("resize", resetListeners, { passive: true });
-  reducedMotionQuery.addEventListener("change", resetListeners);
-  desktopQuery.addEventListener("change", resetListeners);
+    observer.observe(hero);
+  } else {
+    heroIsActive = true;
+  }
+
+  syncParallaxState();
+
+  window.addEventListener("resize", syncParallaxState, { passive: true });
+  reducedMotionQuery.addEventListener("change", syncParallaxState);
+  desktopQuery.addEventListener("change", syncParallaxState);
 })();
 
 // Upload final campaign assets manually to ./assets/rtd/ using the names documented in README.md.
