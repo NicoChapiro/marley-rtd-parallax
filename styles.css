@@ -1478,3 +1478,241 @@ p {
     padding-top: 92px;
   }
 }
+
+/* Dynamic Ritual collage parallax pass. */
+.ritual {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ritual__visual {
+  position: relative;
+  z-index: 4;
+  width: min(54vw, 760px);
+  min-height: clamp(560px, 52vw, 720px);
+  justify-self: center;
+  overflow: visible;
+  contain: layout;
+  align-self: stretch;
+  transform: translateX(15%);
+  transform-origin: center left;
+}
+
+.ritual__ice-splash {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20%;
+  z-index: 1;
+  width: min(88vw, 1100px);
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  opacity: .92;
+  pointer-events: none;
+  transform: translateX(15%) scale(1.12);
+  filter: drop-shadow(0 30px 38px rgba(0, 0, 0, .42));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .08) 6%, #000 18%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .08) 6%, #000 18%, #000 100%);
+  will-change: transform;
+}
+
+.ritual-can {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  filter: drop-shadow(0 28px 28px rgba(0, 0, 0, .52));
+  will-change: transform;
+}
+
+.ritual-can .can--single {
+  position: relative;
+  width: clamp(120px, 10vw, 165px);
+  max-height: 48vh;
+  opacity: 0;
+}
+
+.ritual-can .can--single.is-loaded {
+  opacity: 1;
+}
+
+.ritual-can--cap {
+  left: 11%;
+  top: 26%;
+  transform: rotate(-12deg);
+}
+
+.ritual-can--van {
+  left: 41%;
+  top: 30%;
+  z-index: 4;
+  transform: rotate(13deg);
+}
+
+.ritual-can--car {
+  left: 28%;
+  top: 39%;
+  z-index: 4;
+  transform: rotate(-15deg);
+}
+
+.ritual-can--car .can--single {
+  width: clamp(128px, 11vw, 178px);
+}
+
+.ritual__copy {
+  z-index: 5;
+}
+
+@media (max-width: 900px) {
+  .ritual__visual {
+    width: min(100%, 560px);
+    min-height: clamp(340px, 72vw, 500px);
+    order: 2;
+  }
+
+  .ritual__copy {
+    order: 1;
+  }
+
+  .ritual__ice-splash {
+    top: 0;
+    bottom: 0;
+    left: -28%;
+    width: min(150vw, 760px);
+    height: 100%;
+    object-position: center center;
+    opacity: .82;
+  }
+
+  .ritual-can .can--single {
+    width: clamp(76px, 24vw, 110px);
+    max-height: 34vh;
+  }
+
+  .ritual-can--car .can--single {
+    width: clamp(84px, 26vw, 118px);
+  }
+
+  .ritual-can--cap {
+    left: 7%;
+    top: 23%;
+    transform: rotate(-7deg);
+  }
+
+  .ritual-can--van {
+    left: 66%;
+    top: 28%;
+    transform: rotate(8deg);
+  }
+
+  .ritual-can--car {
+    left: 36%;
+    top: 45%;
+    transform: rotate(-10deg);
+  }
+}
+
+@media (max-width: 540px) {
+  .ritual__visual {
+    min-height: clamp(285px, 86vw, 370px);
+  }
+
+  .ritual__ice-splash {
+    left: -34%;
+    width: 165vw;
+    opacity: .78;
+  }
+
+  .ritual-can--cap {
+    left: 5%;
+    top: 23%;
+  }
+
+  .ritual-can--van {
+    left: 67%;
+    top: 29%;
+  }
+
+  .ritual-can--car {
+    left: 35%;
+    top: 47%;
+  }
+}
+
+@media (max-width: 360px) {
+  .ritual__visual {
+    min-height: 270px;
+  }
+
+  .ritual-can .can--single {
+    width: clamp(68px, 25vw, 96px);
+  }
+
+  .ritual-can--car .can--single {
+    width: clamp(76px, 27vw, 108px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ritual__ice-splash,
+  .ritual-can {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.ritual .rasta-tabs,
+.ritual .rasta-stripe--bottom {
+  z-index: 6;
+}
+
+.ritual::before {
+  content: none;
+  display: none;
+}
+
+.ritual__copy::before {
+  content: "";
+  position: absolute;
+  inset: -18% -12%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, .62),
+    rgba(0, 0, 0, .2) 48%,
+    transparent 72%
+  );
+}
+
+/* Compact Ritual campaign block height adjustment. */
+.ritual.section {
+  min-height: auto;
+  height: auto;
+  padding-top: clamp(36px, 4vw, 56px);
+  padding-bottom: clamp(36px, 4vw, 56px);
+}
+
+.ritual__visual {
+  min-height: clamp(420px, 48vw, 620px);
+}
+
+@media (max-width: 767px) {
+  .ritual.section {
+    min-height: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .ritual__visual {
+    min-height: clamp(360px, 92vw, 460px);
+  }
+}
+
+.ritual .ice--front {
+  display: none;
+}
