@@ -176,6 +176,18 @@ frost-texture.png
 
 Mientras un asset no exista, el sitio mantiene la composición con gradientes, pseudo-elementos y placeholders CSS no binarios. Las latas usan un placeholder CSS hasta que el PNG correspondiente carga correctamente.
 
+
+### Optimización de assets para producción
+
+- Mantén la conversión de assets binarios fuera de Codex y realiza cualquier exportación final manualmente antes de subirla al repositorio.
+- Para el fondo principal de montaña, evalúa generar `./assets/rtd/hero/hero_fondo.webp` o un JPG optimizado equivalente; idealmente debería quedar bajo 300–500 KB si el nivel de detalle lo permite.
+- Para la roca frontal, evalúa `./assets/rtd/hero/hero_roca.webp` o un PNG/WebP optimizado según las necesidades de transparencia; idealmente debería quedar bajo 300–600 KB dependiendo del canal alpha.
+- Las latas de producto deben conservar transparencia limpia: usa PNG transparente optimizado, o WebP con alpha solamente si el resultado está aprobado visualmente.
+- Optimiza las latas sin artefactos visibles en los bordes, halos o pérdida de fidelidad en el empaque.
+- Evita la sobrecompresión que dañe textos, logos, colores o detalles del packaging.
+- Después de comprimir, prueba desktop y mobile para validar encuadre, nitidez, ausencia de scroll horizontal y que no aparezcan artefactos sobre los fondos.
+- Mantén las rutas relativas y no elimines placeholders CSS ni cargas defensivas para assets opcionales bajo el fold.
+
 ### Instrucciones de assets
 
 - Las imágenes deben subirse manualmente a `./assets/rtd/`.
