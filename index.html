@@ -166,19 +166,58 @@
         <span class="rasta-stripe rasta-stripe--bottom" aria-hidden="true"></span>
       </section>
 
-      <section id="sabores" class="flavour flavour--vanilla section reveal" aria-labelledby="van-title" style="--section-accent: #ead7a4; --section-glow: rgba(234, 215, 164, .28)">
-        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="van-title">Vanilla Latte</h2><p>Elaborada a partir de café filtrado con notas de vainilla, generando una mezcla equilibrada e irresistible.</p><a class="flavour__link" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Ver Vanilla Latte</a></div>
-        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.23" data-mouse="-8"><img class="can can--single" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Ready to Drink Vanilla Latte" loading="lazy" decoding="async" /></figure></div>
-      </section>
+      <section id="sabores" class="flavors-scroll section reveal" aria-labelledby="flavors-title" data-active-flavor="vanilla">
+        <div class="flavors-scroll__inner">
+          <div class="flavors-scroll__copy">
+            <p class="eyebrow">Sabores Ready to Drink</p>
+            <h2 id="flavors-title">Elige tu momento Marley</h2>
+            <p class="flavors-scroll__intro">Tres sabores fríos, cremosos y listos para acompañarte donde vayas.</p>
 
-      <section class="flavour flavour--cappuccino section reveal" aria-labelledby="cap-title" style="--section-accent: #9b6a45; --section-glow: rgba(120, 76, 43, .36)">
-        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.25" data-mouse="8"><img class="can can--single" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Marley Coffee Ready to Drink Cappuccino" loading="lazy" decoding="async" /></figure></div>
-        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="cap-title">Cappuccino</h2><p>Elaborada a partir de café filtrado. Es la bebida perfecta para seguirte el ritmo.</p><a class="flavour__link" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Ver Cappuccino</a></div>
-      </section>
+            <div class="flavors-scroll__tabs" aria-label="Selecciona un sabor">
+              <button class="flavors-scroll__tab" type="button" data-flavor-button="vanilla" aria-pressed="true">Vanilla Latte</button>
+              <button class="flavors-scroll__tab" type="button" data-flavor-button="cappuccino" aria-pressed="false">Cappuccino</button>
+              <button class="flavors-scroll__tab" type="button" data-flavor-button="caramel" aria-pressed="false">Caramel</button>
+            </div>
 
-      <section class="flavour flavour--caramel section reveal" aria-labelledby="car-title" style="--section-accent: #d8891f; --section-glow: rgba(216, 137, 31, .36)">
-        <div class="flavour__copy"><p class="eyebrow">Marley Coffee™</p><h2 id="car-title">Caramel</h2><p>Elaborada a partir de café filtrado. Combina el irresistible sabor del caramelo con la intensidad del café.</p><a class="flavour__link" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Ver Caramel</a></div>
-        <div class="flavour__visual"><figure class="can-wrap can-wrap--single" data-parallax data-speed="0.22" data-mouse="10"><img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Ready to Drink Caramel" loading="lazy" decoding="async" /></figure></div>
+            <div class="flavors-scroll__details" aria-live="polite">
+              <article class="flavors-scroll__detail" data-flavor-panel="vanilla">
+                <h3>Vanilla Latte</h3>
+                <p>Elaborada a partir de café filtrado con notas de vainilla, generando una mezcla equilibrada e irresistible.</p>
+              </article>
+              <article class="flavors-scroll__detail" data-flavor-panel="cappuccino">
+                <h3>Cappuccino</h3>
+                <p>Elaborada a partir de café filtrado. Es la bebida perfecta para seguirte el ritmo.</p>
+              </article>
+              <article class="flavors-scroll__detail" data-flavor-panel="caramel">
+                <h3>Caramel</h3>
+                <p>Elaborada a partir de café filtrado. Combina el irresistible sabor del caramelo con la intensidad del café.</p>
+              </article>
+            </div>
+
+            <a class="button flavors-scroll__cta" href="https://www.marleycoffee.cl/cafe/bebidas-preparadas/ready-to-drink">Comprar Ready to Drink</a>
+          </div>
+
+          <div class="flavors-scroll__stage" aria-label="Latas Marley Coffee Ready to Drink">
+            <div class="flavors-scroll__lifestyle-slot" data-bg-slot="vanilla" aria-hidden="true"></div>
+            <div class="flavors-scroll__lifestyle-slot" data-bg-slot="cappuccino" aria-hidden="true"></div>
+            <div class="flavors-scroll__lifestyle-slot" data-bg-slot="caramel" aria-hidden="true"></div>
+            <figure class="flavors-scroll__can flavors-scroll__can--vanilla">
+              <img class="can can--single" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Ready to Drink Vanilla Latte 250 ml" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="flavors-scroll__can flavors-scroll__can--cappuccino">
+              <img class="can can--single" data-src="./assets/rtd/rtd-cappuccino-250ml.png" alt="Lata Marley Coffee Ready to Drink Cappuccino 250 ml" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="flavors-scroll__can flavors-scroll__can--caramel">
+              <img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Ready to Drink Caramel 250 ml" loading="lazy" decoding="async" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="flavors-scroll__markers" aria-hidden="true">
+          <span data-flavor-marker="vanilla"></span>
+          <span data-flavor-marker="cappuccino"></span>
+          <span data-flavor-marker="caramel"></span>
+        </div>
       </section>
 
       <section id="lifestyle" class="lifestyle section reveal" aria-labelledby="life-title">

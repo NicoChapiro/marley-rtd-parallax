@@ -313,3 +313,52 @@ if (!reduceMotion) {
   stickyCta.addEventListener('blur', setStickyVisibility);
   mobileQuery.addEventListener('change', setStickyVisibility);
 })();
+
+(function () {
+  const section = document.querySelector('.flavors-scroll');
+  if (!section) return;
+
+  const flavors = ['vanilla', 'cappuccino', 'caramel'];
+  const buttons = [...section.querySelectorAll('[data-flavor-button]')];
+  const markers = [...section.querySelectorAll('[data-flavor-marker]')];
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function setActiveFlavor(flavor) {
+    if (!flavors.includes(flavor)) return;
+    section.dataset.activeFlavor = flavor;
+    buttons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.flavorButton === flavor));
+    });
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      setActiveFlavor(button.dataset.flavorButton);
+    });
+  });
+
+  if (!reducedMotionQuery.matches && 'IntersectionObserver' in window) {
+    const visibleMarkers = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visibleMarkers.set(entry.target, entry.intersectionRatio);
+        } else {
+          visibleMarkers.delete(entry.target);
+        }
+      });
+
+      const visible = [...visibleMarkers.entries()]
+        .sort((a, b) => b[1] - a[1])[0];
+
+      if (visible) setActiveFlavor(visible[0].dataset.flavorMarker);
+    }, {
+      rootMargin: '-35% 0px -35% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    });
+
+    markers.forEach((marker) => observer.observe(marker));
+  }
+
+  setActiveFlavor(section.dataset.activeFlavor || 'vanilla');
+})();
