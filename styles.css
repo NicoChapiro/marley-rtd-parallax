@@ -1503,7 +1503,7 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -10%;
+  left: -20%;
   z-index: 1;
   width: min(88vw, 1100px);
   height: 100%;
