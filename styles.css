@@ -1836,9 +1836,9 @@ p {
   min-height: clamp(560px, 72svh, 760px);
   padding: clamp(64px, 8vw, 110px) clamp(22px, 6vw, 96px);
   background:
-    radial-gradient(circle at 76% 28%, rgba(248, 196, 0, .22), transparent 24%),
-    radial-gradient(circle at 88% 74%, rgba(216, 137, 31, .2), transparent 22%),
-    radial-gradient(circle at 38% 85%, rgba(111, 141, 42, .14), transparent 25%),
+    radial-gradient(circle at 73% 46%, rgba(248, 196, 0, .2), transparent 23%),
+    radial-gradient(circle at 88% 72%, rgba(216, 137, 31, .14), transparent 20%),
+    radial-gradient(circle at 32% 88%, rgba(111, 141, 42, .1), transparent 24%),
     linear-gradient(135deg, #11100f 0, #060606 58%, #120c05 100%);
 }
 
@@ -1850,16 +1850,17 @@ p {
   border: 1px solid rgba(255, 255, 255, .09);
   border-radius: clamp(28px, 4vw, 52px);
   background:
-    linear-gradient(120deg, rgba(255,255,255,.07), transparent 36%),
-    radial-gradient(circle at 78% 24%, rgba(248,196,0,.1), transparent 26%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 36px 86px rgba(0,0,0,.2);
+    radial-gradient(circle at 73% 44%, rgba(248,196,0,.12), transparent 24%),
+    linear-gradient(120deg, rgba(255,255,255,.055), transparent 34%),
+    linear-gradient(180deg, transparent 52%, rgba(0,0,0,.28));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 36px 86px rgba(0,0,0,.24);
 }
 
 .lifestyle-story::after {
-  opacity: .5;
+  opacity: .8;
   background:
-    radial-gradient(circle at 78% 18%, rgba(255,255,255,.12), transparent 10%),
-    linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,.05) 52%, transparent 62%);
+    radial-gradient(circle at 72% 48%, transparent 0 22%, rgba(0,0,0,.22) 58%, rgba(0,0,0,.48) 100%),
+    linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,.035) 52%, transparent 62%);
 }
 
 .lifestyle-story__copy {
@@ -1879,36 +1880,42 @@ p {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: clamp(420px, 46vw, 590px);
+  min-height: clamp(400px, 43vw, 560px);
   overflow: visible;
+  perspective: 900px;
 }
 
 .lifestyle-story__visual::before {
   content: "";
   position: absolute;
-  width: min(48vw, 560px);
+  width: min(42vw, 500px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(248,196,0,.24), transparent 66%);
-  filter: blur(8px);
+  background:
+    radial-gradient(circle, rgba(248,196,0,.3), rgba(216,137,31,.14) 34%, transparent 68%);
+  filter: blur(12px);
 }
 
 .lifestyle-slot {
   position: absolute;
   display: flex;
-  align-items: end;
-  justify-content: start;
-  padding: 18px;
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 28px;
+  align-items: start;
+  justify-content: end;
+  padding: clamp(12px, 1.3vw, 18px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: clamp(18px, 2.2vw, 30px);
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(255,255,255,.13), transparent 38%),
-    radial-gradient(circle at 72% 28%, rgba(248,196,0,.2), transparent 28%),
-    linear-gradient(160deg, rgba(20,27,25,.92), rgba(8,8,8,.72));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.13), 0 26px 58px rgba(0,0,0,.42);
+    radial-gradient(circle at 42% 30%, rgba(255, 207, 48, .16), transparent 31%),
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.018) 46%, rgba(0,0,0,.28)),
+    linear-gradient(160deg, rgba(24, 28, 24, .76), rgba(5,5,5,.88));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -38px 70px rgba(0,0,0,.24),
+    0 28px 60px rgba(0,0,0,.38);
+  backdrop-filter: blur(8px);
   transform: translate3d(0, 0, 0);
-  transition: transform .28s ease, filter .28s ease, border-color .28s ease;
+  transition: transform .28s ease, filter .28s ease, border-color .28s ease, opacity .28s ease;
 }
 
 .lifestyle-slot::before {
@@ -1916,40 +1923,40 @@ p {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 24% 20%, rgba(255,255,255,.14) 0 1px, transparent 2px),
-    radial-gradient(circle at 76% 74%, rgba(255,255,255,.08) 0 1px, transparent 2px),
-    linear-gradient(90deg, transparent, rgba(255,255,255,.055), transparent);
-  background-size: 26px 26px, 31px 31px, 100% 100%;
-  opacity: .42;
+    linear-gradient(135deg, rgba(255,255,255,.13), transparent 34%),
+    radial-gradient(circle at 24% 18%, rgba(255,255,255,.1), transparent 22%),
+    linear-gradient(180deg, transparent 48%, rgba(0,0,0,.42));
+  opacity: .58;
   mix-blend-mode: screen;
 }
 
 .lifestyle-slot::after {
   content: "";
   position: absolute;
-  inset: 12px;
-  border: 1px dashed rgba(248,196,0,.24);
-  border-radius: 20px;
+  inset: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: calc(clamp(18px, 2.2vw, 30px) - 8px);
+  box-shadow: inset 0 0 42px rgba(0,0,0,.28);
 }
 
 .lifestyle-slot span {
   position: relative;
   z-index: 1;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.42);
-  color: rgba(251,240,212,.92);
+  padding: 0;
+  background: transparent;
+  color: rgba(251,240,212,.82);
   font-family: var(--font-subtitle);
-  font-size: .78rem;
+  font-size: .68rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
+  opacity: .56;
 }
 
 .lifestyle-slot--outdoor {
-  top: 3%;
-  right: 7%;
-  width: min(76%, 470px);
+  top: 5%;
+  right: 4%;
+  width: min(82%, 520px);
   aspect-ratio: 16 / 9;
   background:
     linear-gradient(145deg, rgba(146,199,231,.15), transparent 42%),
@@ -1958,29 +1965,30 @@ p {
 }
 
 .lifestyle-slot--onthego {
-  left: 0;
-  bottom: 10%;
-  width: min(54%, 315px);
+  left: 1%;
+  bottom: 14%;
+  width: min(46%, 290px);
   aspect-ratio: 4 / 5;
-  transform: rotate(-5deg);
+  transform: rotate(-4deg) translateZ(-18px);
 }
 
 .lifestyle-slot--closeup {
-  right: 0;
-  bottom: 2%;
-  width: min(48%, 290px);
+  right: 3%;
+  bottom: 7%;
+  width: min(42%, 250px);
   aspect-ratio: 3 / 2;
-  transform: rotate(4deg);
+  transform: rotate(3deg) translateZ(8px);
   background:
-    linear-gradient(135deg, rgba(255,255,255,.16), transparent 40%),
-    radial-gradient(circle at 68% 35%, rgba(216,137,31,.24), transparent 30%),
-    linear-gradient(160deg, rgba(40,24,10,.92), rgba(7,7,7,.74));
+    radial-gradient(circle at 38% 32%, rgba(255,255,255,.13), transparent 28%),
+    radial-gradient(circle at 68% 35%, rgba(216,137,31,.2), transparent 30%),
+    linear-gradient(160deg, rgba(40,24,10,.76), rgba(7,7,7,.88));
 }
 
 .lifestyle-story__can {
-  z-index: 3;
+  z-index: 4;
   justify-self: center;
   align-self: center;
+  filter: drop-shadow(0 46px 42px rgba(0,0,0,.68));
 }
 
 .lifestyle-story__can .can--single,
@@ -1996,8 +2004,8 @@ p {
     transform: translateY(-6px);
   }
 
-  .lifestyle-slot--onthego:hover { transform: rotate(-5deg) translateY(-6px); }
-  .lifestyle-slot--closeup:hover { transform: rotate(4deg) translateY(-6px); }
+  .lifestyle-slot--onthego:hover { transform: rotate(-4deg) translateY(-6px) translateZ(-18px); }
+  .lifestyle-slot--closeup:hover { transform: rotate(3deg) translateY(-6px) translateZ(8px); }
 }
 
 @media (max-width: 900px) {
@@ -2014,27 +2022,27 @@ p {
   }
 
   .lifestyle-story__visual {
-    min-height: clamp(340px, 78vw, 470px);
+    min-height: clamp(330px, 76vw, 460px);
     width: min(100%, 620px);
     justify-self: center;
   }
 
   .lifestyle-slot--outdoor {
-    top: 0;
-    right: 4%;
-    width: 82%;
+    top: 2%;
+    right: 2%;
+    width: 84%;
   }
 
   .lifestyle-slot--onthego {
-    left: 2%;
-    bottom: 7%;
-    width: 43%;
+    left: 1%;
+    bottom: 8%;
+    width: 42%;
   }
 
   .lifestyle-slot--closeup {
     right: 1%;
-    bottom: 5%;
-    width: 46%;
+    bottom: 9%;
+    width: 43%;
   }
 
   .lifestyle-story__can .can--single,
@@ -2071,19 +2079,19 @@ p {
   }
 
   .lifestyle-slot {
-    padding: 12px;
+    padding: 10px;
     border-radius: 20px;
   }
 
   .lifestyle-slot::after {
-    inset: 8px;
+    inset: 7px;
     border-radius: 14px;
   }
 
   .lifestyle-slot span {
-    padding: 6px 8px;
-    font-size: .64rem;
-    letter-spacing: .09em;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    opacity: .48;
   }
 
   .lifestyle-slot--outdoor {
