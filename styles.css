@@ -352,8 +352,8 @@ h2 {
 .closing {
   grid-template-columns: minmax(0, .9fr) minmax(380px, 1.1fr);
   min-height: auto;
-  padding-top: clamp(88px, 8vw, 132px);
-  padding-bottom: clamp(88px, 8vw, 132px);
+  padding-top: clamp(72px, 6vw, 108px);
+  padding-bottom: clamp(76px, 6vw, 112px);
   background:
     radial-gradient(circle at 72% 36%, rgba(255,255,255,.42), transparent 23%),
     radial-gradient(circle at 22% 86%, rgba(111,141,42,.2), transparent 22%),
@@ -377,7 +377,7 @@ h2 {
 }
 
 .closing__group {
-  min-height: clamp(500px, 48vw, 640px);
+  min-height: clamp(440px, 40vw, 560px);
   overflow: visible;
 }
 
@@ -440,7 +440,7 @@ h2 {
   }
 
   .flavour__visual {
-    min-height: 390px;
+    min-height: 350px;
   }
 
   .can--single,
@@ -709,7 +709,7 @@ h2 {
 
   .closing {
     padding-top: 78px;
-    padding-bottom: 78px;
+    padding-bottom: 70px;
     gap: 22px;
   }
 
@@ -719,7 +719,7 @@ h2 {
   }
 
   .closing__group {
-    min-height: clamp(285px, 76vw, 340px);
+    min-height: clamp(270px, 70vw, 320px);
   }
 
   .closing__cta {
@@ -1421,7 +1421,7 @@ p {
   }
 
   .closing {
-    padding-bottom: max(86px, calc(env(safe-area-inset-bottom) + 74px));
+    padding-bottom: max(76px, calc(env(safe-area-inset-bottom) + 64px));
   }
 }
 
@@ -1718,7 +1718,7 @@ p {
 .flavors-scroll {
   --active-flavor-color: var(--vanilla);
   --active-flavor-glow: rgba(234, 215, 164, .3);
-  min-height: 210svh;
+  min-height: 178svh;
   padding-block: 0;
   background:
     radial-gradient(circle at 72% 34%, var(--active-flavor-glow), transparent 28%),
@@ -1751,7 +1751,7 @@ p {
   gap: clamp(34px, 6vw, 104px);
   align-items: center;
   min-height: 100svh;
-  padding: clamp(96px, 10vw, 150px) clamp(22px, 6vw, 96px);
+  padding: clamp(72px, 7vw, 118px) clamp(22px, 6vw, 96px);
 }
 .flavors-scroll__copy { position: relative; z-index: 3; max-width: 760px; text-wrap: pretty; }
 .flavors-scroll .eyebrow, .flavors-scroll h3 { color: var(--active-flavor-color); }
@@ -1778,7 +1778,7 @@ p {
 .flavors-scroll[data-active-flavor="vanilla"] [data-flavor-panel="vanilla"],
 .flavors-scroll[data-active-flavor="cappuccino"] [data-flavor-panel="cappuccino"],
 .flavors-scroll[data-active-flavor="caramel"] [data-flavor-panel="caramel"] { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.flavors-scroll__stage { position: relative; display: grid; place-items: center; min-height: clamp(520px, 52vw, 680px); overflow: visible; }
+.flavors-scroll__stage { position: relative; display: grid; place-items: center; min-height: clamp(460px, 44vw, 600px); overflow: visible; }
 .flavors-scroll__stage::before { content: ""; position: absolute; width: min(52vw, 610px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, var(--active-flavor-glow), transparent 64%); filter: blur(5px); transition: background .45s ease; }
 .flavors-scroll__stage::after { content: ""; position: absolute; bottom: 11%; width: min(42vw, 450px); height: 60px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,0,0,.66), transparent 70%); filter: blur(10px); }
 .flavors-scroll__lifestyle-slot { position: absolute; inset: 9%; border-radius: 36px; opacity: 0; background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 46%, var(--active-flavor-glow)); border: 1px solid rgba(255,255,255,.08); transition: opacity .35s ease; }
@@ -1802,20 +1802,20 @@ p {
 .flavors-scroll__markers { position: absolute; inset: 0; display: grid; grid-template-rows: repeat(3, 1fr); pointer-events: none; }
 .flavors-scroll__markers span { min-height: 70svh; }
 @media (max-width: 900px) {
-  .flavors-scroll { min-height: auto; padding: 78px 22px; }
+  .flavors-scroll { min-height: auto; padding: 68px 22px; }
   .flavors-scroll__inner { position: relative; top: auto; grid-template-columns: 1fr; min-height: auto; padding: 0; gap: 22px; }
   .flavors-scroll h2 { max-width: 9ch; }
   .flavors-scroll__tabs { margin-top: 22px; }
-  .flavors-scroll__details { min-height: 210px; }
-  .flavors-scroll__stage { order: -1; min-height: clamp(310px, 78vw, 430px); }
+  .flavors-scroll__details { min-height: 190px; }
+  .flavors-scroll__stage { order: -1; min-height: clamp(290px, 72vw, 400px); }
   .flavors-scroll__can .can { width: min(52vw, 245px); max-height: 44vh; }
   .flavors-scroll__stage::before { width: min(88vw, 430px); }
   .flavors-scroll__markers { display: none; }
 }
 @media (max-width: 430px) {
-  .flavors-scroll { padding: 72px 18px; }
+  .flavors-scroll { padding: 64px 18px; }
   .flavors-scroll__tab { flex: 1 1 100%; justify-content: center; }
-  .flavors-scroll__details { min-height: 260px; }
+  .flavors-scroll__details { min-height: 238px; }
   .flavors-scroll__can .can { width: min(50vw, 205px); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1834,7 +1834,7 @@ p {
   gap: clamp(28px, 5vw, 86px);
   align-items: center;
   min-height: clamp(560px, 72svh, 760px);
-  padding: clamp(64px, 8vw, 110px) clamp(22px, 6vw, 96px);
+  padding: clamp(56px, 6vw, 92px) clamp(22px, 6vw, 96px);
   background:
     radial-gradient(circle at 73% 46%, rgba(248, 196, 0, .2), transparent 23%),
     radial-gradient(circle at 88% 72%, rgba(216, 137, 31, .14), transparent 20%),
@@ -2012,7 +2012,7 @@ p {
   .lifestyle-story {
     grid-template-columns: 1fr;
     min-height: auto;
-    padding: 78px 22px 82px;
+    padding: 68px 22px 72px;
     gap: 24px;
   }
 
@@ -2022,7 +2022,7 @@ p {
   }
 
   .lifestyle-story__visual {
-    min-height: clamp(330px, 76vw, 460px);
+    min-height: clamp(310px, 72vw, 430px);
     width: min(100%, 620px);
     justify-self: center;
   }
@@ -2054,7 +2054,7 @@ p {
 
 @media (max-width: 540px) {
   .lifestyle-story {
-    padding: 72px 18px 70px;
+    padding: 62px 18px 64px;
     gap: 18px;
   }
 
@@ -2075,7 +2075,7 @@ p {
   }
 
   .lifestyle-story__visual {
-    min-height: clamp(300px, 86vw, 380px);
+    min-height: clamp(285px, 80vw, 360px);
   }
 
   .lifestyle-slot {
@@ -2130,7 +2130,7 @@ p {
 .lifestyle-story {
   --lifestyle-glow: rgba(146, 199, 231, .26);
   --lifestyle-accent: rgba(146, 199, 231, .62);
-  min-height: 148svh;
+  min-height: 128svh;
   align-items: start;
   transition: background .42s ease;
 }
@@ -2153,7 +2153,7 @@ p {
 .lifestyle-story__copy,
 .lifestyle-story__visual {
   position: sticky;
-  top: clamp(86px, 12svh, 128px);
+  top: clamp(64px, 9svh, 104px);
 }
 
 .lifestyle-story__controls {

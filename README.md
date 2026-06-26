@@ -219,3 +219,22 @@ python3 -m http.server 4173
 ```
 
 Luego abre `http://localhost:4173/` en el navegador.
+
+## Final Visual QA Notes
+
+- **Production URL:** https://marley-rtd-parallax.vercel.app/
+- **Preview URL:** _Pendiente: agregar URL del Vercel Preview de PR #28._
+- **Tested viewports checklist:**
+  - [ ] Desktop 1280px.
+  - [ ] Desktop 1440px.
+  - [ ] Desktop 1920px.
+  - [ ] Mobile 320px.
+  - [ ] Mobile 375px.
+  - [ ] Mobile 390px.
+  - [ ] Mobile 430px.
+- **Pending real lifestyle image assets:** los slots lifestyle siguen usando tratamiento CSS hasta que fotografía final sea aprobada y subida manualmente.
+- **Pending legal/nutritional validation of claims:** no marcar como aprobados hasta contar con validación legal, nutricional y/o regulatoria.
+  - “Sin sellos”
+  - “7 ingredientes”
+  - “Apto para deportistas”
+  - “Equivalente a 1 espresso”
