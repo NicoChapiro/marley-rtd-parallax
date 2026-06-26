@@ -1821,3 +1821,299 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .flavors-scroll, .flavors-scroll *, .flavors-scroll *::before, .flavors-scroll *::after { transition-duration: .001ms !important; }
 }
+
+/* PR #26: CSS-only campaign lifestyle slots for future approved photography. */
+.button--compact {
+  min-height: 58px;
+  padding: 16px 32px;
+}
+
+.lifestyle-story {
+  display: grid;
+  grid-template-columns: minmax(0, .86fr) minmax(420px, 1fr);
+  gap: clamp(28px, 5vw, 86px);
+  align-items: center;
+  min-height: clamp(560px, 72svh, 760px);
+  padding: clamp(64px, 8vw, 110px) clamp(22px, 6vw, 96px);
+  background:
+    radial-gradient(circle at 76% 28%, rgba(248, 196, 0, .22), transparent 24%),
+    radial-gradient(circle at 88% 74%, rgba(216, 137, 31, .2), transparent 22%),
+    radial-gradient(circle at 38% 85%, rgba(111, 141, 42, .14), transparent 25%),
+    linear-gradient(135deg, #11100f 0, #060606 58%, #120c05 100%);
+}
+
+.lifestyle-story::before {
+  content: "";
+  position: absolute;
+  inset: clamp(16px, 3vw, 42px);
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, .09);
+  border-radius: clamp(28px, 4vw, 52px);
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.07), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(248,196,0,.1), transparent 26%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 36px 86px rgba(0,0,0,.2);
+}
+
+.lifestyle-story::after {
+  opacity: .5;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,.12), transparent 10%),
+    linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,.05) 52%, transparent 62%);
+}
+
+.lifestyle-story__copy {
+  position: relative;
+  z-index: 4;
+  max-width: 720px;
+  text-shadow: 0 2px 18px #000;
+}
+
+.lifestyle-story__copy p:not(.eyebrow) {
+  max-width: 40ch;
+  color: rgba(251, 240, 212, .92);
+  font-size: clamp(1.14rem, 1.6vw, 1.34rem);
+}
+
+.lifestyle-story__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 46vw, 590px);
+  overflow: visible;
+}
+
+.lifestyle-story__visual::before {
+  content: "";
+  position: absolute;
+  width: min(48vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(248,196,0,.24), transparent 66%);
+  filter: blur(8px);
+}
+
+.lifestyle-slot {
+  position: absolute;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.13), transparent 38%),
+    radial-gradient(circle at 72% 28%, rgba(248,196,0,.2), transparent 28%),
+    linear-gradient(160deg, rgba(20,27,25,.92), rgba(8,8,8,.72));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.13), 0 26px 58px rgba(0,0,0,.42);
+  transform: translate3d(0, 0, 0);
+  transition: transform .28s ease, filter .28s ease, border-color .28s ease;
+}
+
+.lifestyle-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 24% 20%, rgba(255,255,255,.14) 0 1px, transparent 2px),
+    radial-gradient(circle at 76% 74%, rgba(255,255,255,.08) 0 1px, transparent 2px),
+    linear-gradient(90deg, transparent, rgba(255,255,255,.055), transparent);
+  background-size: 26px 26px, 31px 31px, 100% 100%;
+  opacity: .42;
+  mix-blend-mode: screen;
+}
+
+.lifestyle-slot::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(248,196,0,.24);
+  border-radius: 20px;
+}
+
+.lifestyle-slot span {
+  position: relative;
+  z-index: 1;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.42);
+  color: rgba(251,240,212,.92);
+  font-family: var(--font-subtitle);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.lifestyle-slot--outdoor {
+  top: 3%;
+  right: 7%;
+  width: min(76%, 470px);
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(145deg, rgba(146,199,231,.15), transparent 42%),
+    radial-gradient(circle at 28% 32%, rgba(111,141,42,.2), transparent 28%),
+    linear-gradient(160deg, rgba(18,31,34,.92), rgba(6,6,6,.72));
+}
+
+.lifestyle-slot--onthego {
+  left: 0;
+  bottom: 10%;
+  width: min(54%, 315px);
+  aspect-ratio: 4 / 5;
+  transform: rotate(-5deg);
+}
+
+.lifestyle-slot--closeup {
+  right: 0;
+  bottom: 2%;
+  width: min(48%, 290px);
+  aspect-ratio: 3 / 2;
+  transform: rotate(4deg);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.16), transparent 40%),
+    radial-gradient(circle at 68% 35%, rgba(216,137,31,.24), transparent 30%),
+    linear-gradient(160deg, rgba(40,24,10,.92), rgba(7,7,7,.74));
+}
+
+.lifestyle-story__can {
+  z-index: 3;
+  justify-self: center;
+  align-self: center;
+}
+
+.lifestyle-story__can .can--single,
+.lifestyle-story__can::before {
+  width: clamp(190px, 24vw, 310px);
+  max-height: 58vh;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lifestyle-slot:hover {
+    filter: brightness(1.09);
+    border-color: rgba(248,196,0,.34);
+    transform: translateY(-6px);
+  }
+
+  .lifestyle-slot--onthego:hover { transform: rotate(-5deg) translateY(-6px); }
+  .lifestyle-slot--closeup:hover { transform: rotate(4deg) translateY(-6px); }
+}
+
+@media (max-width: 900px) {
+  .lifestyle-story {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 78px 22px 82px;
+    gap: 24px;
+  }
+
+  .lifestyle-story__copy {
+    max-width: 620px;
+    padding-bottom: 0;
+  }
+
+  .lifestyle-story__visual {
+    min-height: clamp(340px, 78vw, 470px);
+    width: min(100%, 620px);
+    justify-self: center;
+  }
+
+  .lifestyle-slot--outdoor {
+    top: 0;
+    right: 4%;
+    width: 82%;
+  }
+
+  .lifestyle-slot--onthego {
+    left: 2%;
+    bottom: 7%;
+    width: 43%;
+  }
+
+  .lifestyle-slot--closeup {
+    right: 1%;
+    bottom: 5%;
+    width: 46%;
+  }
+
+  .lifestyle-story__can .can--single,
+  .lifestyle-story__can::before {
+    width: clamp(160px, 42vw, 245px);
+    max-height: 43vh;
+  }
+}
+
+@media (max-width: 540px) {
+  .lifestyle-story {
+    padding: 72px 18px 70px;
+    gap: 18px;
+  }
+
+  .lifestyle-story::before {
+    inset: 12px;
+    border-radius: 28px;
+  }
+
+  .lifestyle-story__copy p:not(.eyebrow) {
+    max-width: 32ch;
+    font-size: 1.06rem;
+    line-height: 1.62;
+  }
+
+  .lifestyle-story__copy .button {
+    width: min(100%, 24rem);
+    min-height: 62px;
+  }
+
+  .lifestyle-story__visual {
+    min-height: clamp(300px, 86vw, 380px);
+  }
+
+  .lifestyle-slot {
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .lifestyle-slot::after {
+    inset: 8px;
+    border-radius: 14px;
+  }
+
+  .lifestyle-slot span {
+    padding: 6px 8px;
+    font-size: .64rem;
+    letter-spacing: .09em;
+  }
+
+  .lifestyle-slot--outdoor {
+    width: 88%;
+    right: 0;
+  }
+
+  .lifestyle-slot--onthego {
+    width: 44%;
+    left: 0;
+  }
+
+  .lifestyle-slot--closeup {
+    width: 50%;
+  }
+
+  .lifestyle-story__can .can--single,
+  .lifestyle-story__can::before {
+    width: clamp(145px, 45vw, 198px);
+    max-height: 40vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifestyle-slot,
+  .lifestyle-slot:hover,
+  .lifestyle-slot--onthego,
+  .lifestyle-slot--onthego:hover,
+  .lifestyle-slot--closeup,
+  .lifestyle-slot--closeup:hover {
+    transition-duration: .001ms !important;
+  }
+}
