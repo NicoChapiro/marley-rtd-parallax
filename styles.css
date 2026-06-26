@@ -1785,20 +1785,20 @@ p {
 .flavors-scroll[data-active-flavor="vanilla"] [data-bg-slot="vanilla"],
 .flavors-scroll[data-active-flavor="cappuccino"] [data-bg-slot="cappuccino"],
 .flavors-scroll[data-active-flavor="caramel"] [data-bg-slot="caramel"] { opacity: .62; }
-.flavors-scroll__can { position: absolute; display: grid; place-items: center; margin: 0; filter: drop-shadow(0 34px 34px rgba(0,0,0,.58)); transition: transform .42s ease, opacity .42s ease, filter .42s ease; }
+.flavors-scroll__can { position: absolute; z-index: 1; display: grid; place-items: center; margin: 0; filter: drop-shadow(0 34px 34px rgba(0,0,0,.58)); transition: transform .42s ease, opacity .42s ease, filter .42s ease; }
 .flavors-scroll__can .can { position: relative; opacity: 1; width: min(29vw, 330px); max-height: 66vh; object-fit: contain; animation: float 7s ease-in-out infinite; }
-.flavors-scroll__can--vanilla { transform: translateX(-58%) rotate(-9deg) scale(.72); opacity: .55; }
-.flavors-scroll__can--cappuccino { transform: translateX(0) rotate(0) scale(.72); opacity: .55; }
-.flavors-scroll__can--caramel { transform: translateX(58%) rotate(9deg) scale(.72); opacity: .55; }
+.flavors-scroll__can--vanilla { z-index: 2; transform: translateX(-58%) rotate(-9deg) scale(.64); opacity: .5; }
+.flavors-scroll__can--cappuccino { z-index: 2; transform: translateX(58%) rotate(9deg) scale(.64); opacity: .5; }
+.flavors-scroll__can--caramel { z-index: 2; transform: translateX(58%) rotate(9deg) scale(.64); opacity: .5; }
 .flavors-scroll[data-active-flavor="vanilla"] .flavors-scroll__can--vanilla,
 .flavors-scroll[data-active-flavor="cappuccino"] .flavors-scroll__can--cappuccino,
-.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--caramel { z-index: 2; opacity: 1; filter: drop-shadow(0 42px 42px rgba(0,0,0,.68)); transform: translateX(0) rotate(0) scale(1); }
+.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--caramel { z-index: 5; opacity: 1; filter: drop-shadow(0 42px 42px rgba(0,0,0,.68)); transform: translateX(0) rotate(0) scale(1); }
 .flavors-scroll[data-active-flavor="vanilla"] .flavors-scroll__can--cappuccino,
 .flavors-scroll[data-active-flavor="cappuccino"] .flavors-scroll__can--caramel,
-.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--vanilla { transform: translateX(54%) rotate(9deg) scale(.66); }
+.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--vanilla { z-index: 2; opacity: .5; transform: translateX(58%) rotate(9deg) scale(.64); }
 .flavors-scroll[data-active-flavor="vanilla"] .flavors-scroll__can--caramel,
 .flavors-scroll[data-active-flavor="cappuccino"] .flavors-scroll__can--vanilla,
-.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--cappuccino { transform: translateX(-54%) rotate(-9deg) scale(.66); }
+.flavors-scroll[data-active-flavor="caramel"] .flavors-scroll__can--cappuccino { z-index: 2; opacity: .5; transform: translateX(-58%) rotate(-9deg) scale(.64); }
 .flavors-scroll__markers { position: absolute; inset: 0; display: grid; grid-template-rows: repeat(3, 1fr); pointer-events: none; }
 .flavors-scroll__markers span { min-height: 70svh; }
 @media (max-width: 900px) {
