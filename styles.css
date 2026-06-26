@@ -337,7 +337,7 @@ h2 {
 }
 
 .lifestyle {
-  min-height: 94svh;
+  min-height: clamp(620px, 78svh, 820px);
   align-items: center;
 }
 
@@ -351,8 +351,9 @@ h2 {
 
 .closing {
   grid-template-columns: minmax(0, .9fr) minmax(380px, 1.1fr);
-  min-height: 100svh;
-  padding-top: clamp(112px, 11vw, 170px);
+  min-height: auto;
+  padding-top: clamp(88px, 8vw, 132px);
+  padding-bottom: clamp(88px, 8vw, 132px);
   background:
     radial-gradient(circle at 72% 36%, rgba(255,255,255,.42), transparent 23%),
     radial-gradient(circle at 22% 86%, rgba(111,141,42,.2), transparent 22%),
@@ -1420,7 +1421,7 @@ p {
   }
 
   .closing {
-    padding-bottom: max(104px, calc(env(safe-area-inset-bottom) + 92px));
+    padding-bottom: max(86px, calc(env(safe-area-inset-bottom) + 74px));
   }
 }
 
@@ -1503,7 +1504,7 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -20%;
+  left: -30%;
   z-index: 1;
   width: min(88vw, 1100px);
   height: 100%;
@@ -1581,7 +1582,7 @@ p {
   .ritual__ice-splash {
     top: 0;
     bottom: 0;
-    left: -28%;
+    left: -38%;
     width: min(150vw, 760px);
     height: 100%;
     object-position: center center;
@@ -1622,7 +1623,7 @@ p {
   }
 
   .ritual__ice-splash {
-    left: -34%;
+    left: -44%;
     width: 165vw;
     opacity: .78;
   }
@@ -1711,8 +1712,4 @@ p {
   .ritual__visual {
     min-height: clamp(360px, 92vw, 460px);
   }
-}
-
-.ritual .ice--front {
-  display: none;
 }

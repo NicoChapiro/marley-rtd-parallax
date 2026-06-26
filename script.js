@@ -291,13 +291,17 @@ if (!reduceMotion) {
 (function () {
   const stickyCta = document.querySelector('[data-sticky-purchase]');
   const hero = document.querySelector('#inicio');
+  const closing = document.querySelector('#beneficios');
   const mobileQuery = window.matchMedia('(max-width: 767px)');
 
   if (!stickyCta || !hero) return;
 
   function setStickyVisibility() {
     const heroBottom = hero.getBoundingClientRect().bottom;
-    const shouldShow = mobileQuery.matches && heroBottom < window.innerHeight * 0.35;
+    const closingTop = closing ? closing.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+    const shouldShow = mobileQuery.matches
+      && heroBottom < window.innerHeight * 0.35
+      && closingTop > window.innerHeight * 0.78;
     stickyCta.classList.toggle('is-visible', shouldShow || stickyCta.matches(':focus-visible'));
     stickyCta.tabIndex = mobileQuery.matches ? 0 : -1;
   }
