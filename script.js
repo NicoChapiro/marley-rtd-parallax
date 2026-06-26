@@ -362,3 +362,68 @@ if (!reduceMotion) {
 
   setActiveFlavor(section.dataset.activeFlavor || 'vanilla');
 })();
+
+(function () {
+  const section = document.querySelector('.lifestyle-story');
+  if (!section) return;
+
+  const lifestyles = ['outdoor', 'onthego', 'closeup'];
+  const buttons = [...section.querySelectorAll('[data-lifestyle-button]')];
+  const markers = [...section.querySelectorAll('[data-lifestyle-marker]')];
+  const can = section.querySelector('.lifestyle-story__can');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const canTransforms = {
+    outdoor: 'translate3d(-4%, -3%, 0) scale(.98)',
+    onthego: 'translate3d(2%, 0, 0) scale(1)',
+    closeup: 'translate3d(6%, 2%, 0) scale(1.06)'
+  };
+
+  function setActiveLifestyle(lifestyle) {
+    if (!lifestyles.includes(lifestyle)) return;
+
+    section.dataset.activeLifestyle = lifestyle;
+    buttons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.lifestyleButton === lifestyle));
+    });
+
+    if (can) {
+      can.dataset.baseTransform = reducedMotionQuery.matches ? '' : canTransforms[lifestyle];
+      if (reducedMotionQuery.matches) can.style.transform = '';
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      setActiveLifestyle(button.dataset.lifestyleButton);
+    });
+  });
+
+  setActiveLifestyle(section.dataset.activeLifestyle || 'outdoor');
+
+  if (!reducedMotionQuery.matches && 'IntersectionObserver' in window) {
+    const visibleMarkers = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visibleMarkers.set(entry.target, entry.intersectionRatio);
+        } else {
+          visibleMarkers.delete(entry.target);
+        }
+      });
+
+      const visible = [...visibleMarkers.entries()]
+        .sort((a, b) => b[1] - a[1])[0];
+
+      if (visible) setActiveLifestyle(visible[0].dataset.lifestyleMarker);
+    }, {
+      rootMargin: '-34% 0px -34% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    });
+
+    markers.forEach((marker) => observer.observe(marker));
+  }
+
+  reducedMotionQuery.addEventListener('change', () => {
+    setActiveLifestyle(reducedMotionQuery.matches ? 'outdoor' : section.dataset.activeLifestyle || 'outdoor');
+  });
+})();

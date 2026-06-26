@@ -220,12 +220,17 @@
         </div>
       </section>
 
-      <section id="lifestyle" class="lifestyle lifestyle-story section reveal" aria-labelledby="life-title">
+      <section id="lifestyle" class="lifestyle lifestyle-story section reveal" aria-labelledby="life-title" data-active-lifestyle="outdoor">
         <div class="lifestyle-story__copy">
           <p class="eyebrow">Frío desde el primer sorbo</p>
           <h2 id="life-title">Tu café listo, donde vayas</h2>
           <p>Una lata premium para mantener el ritmo con energía, sabor y frescura.</p>
           <a class="button button--compact" href="#sabores">Ver sabores</a>
+          <div class="lifestyle-story__controls" aria-label="Momentos lifestyle">
+            <button type="button" data-lifestyle-button="outdoor" aria-pressed="true">Outdoor</button>
+            <button type="button" data-lifestyle-button="onthego" aria-pressed="false">On the go</button>
+            <button type="button" data-lifestyle-button="closeup" aria-pressed="false">Close-up</button>
+          </div>
         </div>
 
         <div class="lifestyle-story__visual" aria-label="Espacios para futuras imágenes lifestyle Marley Coffee Ready to Drink">
@@ -242,6 +247,12 @@
           <figure class="lifestyle-story__can can-wrap can-wrap--life" data-parallax data-speed="0.18" data-mouse="8">
             <img class="can can--single" data-src="./assets/rtd/rtd-caramel-250ml.png" alt="Lata Marley Coffee Ready to Drink Caramel" loading="lazy" decoding="async" />
           </figure>
+        </div>
+
+        <div class="lifestyle-story__markers" aria-hidden="true">
+          <span data-lifestyle-marker="outdoor"></span>
+          <span data-lifestyle-marker="onthego"></span>
+          <span data-lifestyle-marker="closeup"></span>
         </div>
       </section>
 
