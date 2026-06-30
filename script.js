@@ -508,3 +508,17 @@ if (!reduceMotion) {
     });
   });
 })();
+
+/* ── Ice Splash Animation ────────────────────────────────────────── */
+(function() {
+  const splash = document.querySelector('.ritual__ice-splash');
+  if (!splash) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        splash.classList.add('animate-splash');
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(document.getElementById('ritual'));
+})();

@@ -2200,3 +2200,112 @@ p {
 @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 .magnetic-btn { transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+
+/* ===================================================================
+   Custom Overrides & Fixes
+   =================================================================== */
+
+/* 1. Hero Sandwich Effect */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  min-height: 80vh;
+}
+.hero__title {
+  position: absolute;
+  z-index: 1;
+  font-size: clamp(6rem, 15vw, 15rem);
+  line-height: 0.9;
+  text-align: center;
+  width: 100%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(248, 196, 0, 0.4); /* subtle gold outline */
+  pointer-events: none;
+}
+.hero__title span { display: block; }
+.hero__stage {
+  position: relative;
+  z-index: 2;
+  transform: scale(1.6);
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.hero__copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 15rem; /* pushes it below the cans */
+}
+/* mobile tweaks */
+@media (max-width: 768px) {
+  .hero__stage { transform: scale(1.2); }
+  .hero__copy { margin-top: 10rem; }
+}
+
+/* 2. Ritual Floating Physics & Ice pop */
+.ritual-can {
+  animation: floatGravity 6s ease-in-out infinite alternate;
+}
+.ritual-can:nth-child(2) { animation-delay: -2s; }
+.ritual-can:nth-child(3) { animation-delay: -4s; }
+
+@keyframes floatGravity {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
+}
+
+.ritual__ice-splash {
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease;
+  opacity: 0.5;
+}
+.ritual__ice-splash.animate-splash {
+  opacity: 1;
+  /* Since it uses parallax transform, we might just scale it up using a keyframe if transition fights JS */
+  animation: splashPop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes splashPop {
+  0% { transform: scale(0.8); }
+  100% { transform: scale(1.12); }
+}
+
+/* 3. Closing Grid Fix */
+.closing__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.closing__labels {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.closing__group {
+  display: flex;
+  justify-content: center;
+  transform: scale(1.3);
+}
+.closing__cta {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 5rem;
+}
+@media (max-width: 900px) {
+  .closing__grid { grid-template-columns: 1fr; }
+  .closing__group { transform: scale(1); margin-top: 2rem; }
+}
