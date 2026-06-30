@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div id="scroll-progress" aria-hidden="true"></div>
     <main class="rtd-page" data-parallax-root>
       <section id="inicio" class="hero hero--mountain" aria-labelledby="hero-title">
         <div class="hero__media" aria-hidden="true">
@@ -260,7 +261,22 @@
         <span class="rasta-stripe rasta-stripe--top" aria-hidden="true"></span>
         <div class="closing__labels" aria-label="Beneficios Ready to Drink">
           <!-- These claims must be legally/nutritionally validated before production. -->
-          <span>Sin sellos</span><span>7 ingredientes</span><span>Apto para deportistas</span><span>Equivalente a 1 espresso</span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="benefit-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div>Sin sellos</div>
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="benefit-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            <div>7 ingredientes</div>
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="benefit-icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            <div>Apto para deportistas</div>
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="benefit-icon"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            <div>Equivalente a 1 espresso</div>
+          </span>
         </div>
         <div class="closing__group" aria-label="Tres latas Marley Coffee Ready to Drink">
           <figure class="can-wrap can-wrap--group can-wrap--group-van" data-parallax data-speed="0.18"><img class="can can--hero" data-src="./assets/rtd/rtd-vainilla-latte-250ml.png" alt="Lata Marley Coffee Ready to Drink Vanilla Latte" loading="lazy" decoding="async" /></figure>

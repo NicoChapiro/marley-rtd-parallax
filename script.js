@@ -96,6 +96,15 @@ function getDepthTransform(el) {
 
 function updateParallax() {
   updateSectionProgress();
+
+  const scrollProgressBar = document.getElementById('scroll-progress');
+  if (scrollProgressBar) {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    const progress = totalScroll > 0 ? Math.max(0, Math.min(1, currentScroll / totalScroll)) : 0;
+    scrollProgressBar.style.transform = `scaleX(${progress})`;
+  }
+
   const viewportCenter = window.innerHeight / 2;
   const isDesktop = desktopQuery.matches;
 
@@ -255,7 +264,9 @@ if (!reduceMotion) {
       const lift = 8 + index * 4;
       const x = smoothX * depth * 90;
       const y = smoothY * depth * 68 - scrollProgress * lift;
-      can.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      const rotX = -smoothY * 15;
+      const rotY = smoothX * 15;
+      can.style.transform = `translate3d(${x}px, ${y}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
     });
 
     rafId = window.requestAnimationFrame(render);
