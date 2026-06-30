@@ -1,6 +1,26 @@
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/**
+ * Refactored: unified parallax motors, centralized media queries,
+ * and adjusted global mouse lerp factor (0.35 → 0.08).
+ *
+ * – reducedMotionQuery & desktopQuery are declared once here and reused everywhere.
+ * – The global parallax motor now excludes elements inside .hero--mountain
+ *   so it no longer competes with the Hero IIFE motor (which uses its own
+ *   IntersectionObserver + local pointermove).
+ */
+
+/* ── Shared media-query singletons ──────────────────────────────── */
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const desktopQuery = window.matchMedia('(min-width: 900px)');
-const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+
+/* ── Global parallax motor ──────────────────────────────────────── */
+const reduceMotion = reducedMotionQuery.matches;
+
+// Collect [data-parallax] elements that are NOT inside .hero--mountain
+// so the global motor doesn't fight with the hero IIFE motor.
+const heroMountain = document.querySelector('.hero--mountain');
+const parallaxItems = [...document.querySelectorAll('[data-parallax]')].filter(
+  (el) => !heroMountain || !heroMountain.contains(el)
+);
 parallaxItems.forEach((el) => {
   if (!el.dataset.baseTransform) {
     el.dataset.baseTransform = getComputedStyle(el).transform === 'none' ? '' : getComputedStyle(el).transform;
@@ -78,8 +98,10 @@ function updateParallax() {
   updateSectionProgress();
   const viewportCenter = window.innerHeight / 2;
   const isDesktop = desktopQuery.matches;
-  smoothMouseX += ((isDesktop ? mouseX : 0) - smoothMouseX) * 0.35;
-  smoothMouseY += ((isDesktop ? mouseY : 0) - smoothMouseY) * 0.35;
+
+  // Lerp factor 0.08 — matches the hero motor's smoother, more cinematic feel
+  smoothMouseX += ((isDesktop ? mouseX : 0) - smoothMouseX) * 0.08;
+  smoothMouseY += ((isDesktop ? mouseY : 0) - smoothMouseY) * 0.08;
 
   parallaxItems.forEach((el) => {
 
@@ -143,12 +165,15 @@ if (!reduceMotion) {
   document.querySelectorAll('[data-step]').forEach((step) => step.classList.add('is-active'));
 }
 
+/* ── Hero IIFE motor (IntersectionObserver + local pointermove) ── */
 (function () {
   const hero = document.querySelector(".hero--mountain");
   if (!hero) return;
 
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const desktopQuery = window.matchMedia("(min-width: 992px)");
+  // Reuse the top-level reducedMotionQuery & desktopQuery
+  // (desktopQuery breakpoint inside this IIFE was 992px; keeping the
+  //  shared 900px value for consistency — adjust in the shared constant
+  //  if you need a different breakpoint).
 
   const bg = hero.querySelector(".hero__layer--bg");
   const rock = hero.querySelector(".hero__layer--rock");
@@ -288,6 +313,7 @@ if (!reduceMotion) {
 // Upload final campaign assets manually to ./assets/rtd/ using the names documented in README.md.
 // Adjust parallax by editing data-speed and data-mouse attributes in index.html.
 
+/* ── Sticky CTA ─────────────────────────────────────────────────── */
 (function () {
   const stickyCta = document.querySelector('[data-sticky-purchase]');
   const hero = document.querySelector('#inicio');
@@ -314,6 +340,7 @@ if (!reduceMotion) {
   mobileQuery.addEventListener('change', setStickyVisibility);
 })();
 
+/* ── Flavors scroll ─────────────────────────────────────────────── */
 (function () {
   const section = document.querySelector('.flavors-scroll');
   if (!section) return;
@@ -321,7 +348,6 @@ if (!reduceMotion) {
   const flavors = ['vanilla', 'cappuccino', 'caramel'];
   const buttons = [...section.querySelectorAll('[data-flavor-button]')];
   const markers = [...section.querySelectorAll('[data-flavor-marker]')];
-  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function setActiveFlavor(flavor) {
     if (!flavors.includes(flavor)) return;
@@ -363,6 +389,7 @@ if (!reduceMotion) {
   setActiveFlavor(section.dataset.activeFlavor || 'vanilla');
 })();
 
+/* ── Lifestyle story ────────────────────────────────────────────── */
 (function () {
   const section = document.querySelector('.lifestyle-story');
   if (!section) return;
@@ -371,7 +398,6 @@ if (!reduceMotion) {
   const buttons = [...section.querySelectorAll('[data-lifestyle-button]')];
   const markers = [...section.querySelectorAll('[data-lifestyle-marker]')];
   const can = section.querySelector('.lifestyle-story__can');
-  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   const canTransforms = {
     outdoor: 'translate3d(-4%, -3%, 0) scale(.98)',
     onthego: 'translate3d(2%, 0, 0) scale(1)',
