@@ -2204,32 +2204,27 @@ p {
    Custom Overrides & Fixes
    =================================================================== */
 
-/* 1. Hero Sandwich Effect */
+/* 1. Safe Hero Layout (2 Columns) */
 .hero__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-items: center;
-  position: relative;
+  gap: 2rem;
   min-height: 80vh;
 }
 .hero__title {
-  position: absolute;
-  z-index: 1;
-  font-size: clamp(6rem, 18vw, 20rem);
+  position: static; /* Revert from absolute */
+  font-size: clamp(4rem, 10vw, 8rem);
+  text-align: left;
+  transform: none;
+  color: var(--gold);
+  -webkit-text-stroke: 0;
+  pointer-events: auto;
   line-height: 0.9;
-  text-align: center;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(248, 196, 0, 0.3);
-  pointer-events: none;
+  margin: 1rem 0;
 }
+.hero__title span { color: var(--gold) !important; -webkit-text-stroke: 0 !important; }
 .hero__copy {
-  position: relative;
-  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2239,13 +2234,17 @@ p {
 }
 .hero__stage {
   grid-column: 2;
-  transform: scale(1.6);
+  transform: scale(2); /* Giant cans */
+  transform-origin: center;
   margin-top: 0;
+  display: flex;
+  justify-content: center;
 }
 @media (max-width: 900px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__copy { grid-column: 1; align-items: center; text-align: center; margin-bottom: 2rem; }
-  .hero__stage { grid-column: 1; transform: scale(1.2); }
+  .hero__grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .hero__copy { align-items: center; grid-column: 1; }
+  .hero__stage { transform: scale(1.3); grid-column: 1; }
+  .hero__title { text-align: center; }
 }
 
 /* 2. Ritual Floating Physics & Ice pop */
@@ -2274,7 +2273,7 @@ p {
   100% { transform: scale(1.12); }
 }
 
-/* 3. Closing Grid Fix */
+/* 3. Closing Grid Cluster Fix */
 .closing__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2284,34 +2283,30 @@ p {
   max-width: 1200px;
   margin: 0 auto;
 }
-.closing__labels {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
-}
 .closing__group {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 1rem;
-  transform: scale(1.3);
-  width: 100%;
+  align-items: flex-end;
+  gap: 0;
+  transform: scale(2.5); /* Massive cans to fill the void */
+  transform-origin: bottom center;
 }
-.closing__cta {
-  grid-column: 1 / -1;
-  text-align: center;
-  margin-top: 5rem;
+.closing__group .can-wrap--group {
+  position: relative !important;
+  left: auto !important; right: auto !important; top: auto !important;
+  margin: 0 -15px; /* Pull them together into a cluster */
 }
+.closing__group .can-wrap--group:nth-child(2) {
+  z-index: 2;
+  transform: translateY(-20px) scale(1.1) !important; /* Middle can is taller and in front */
+}
+.closing__cta { grid-column: 1 / -1; text-align: center; margin-top: 6rem; }
 @media (max-width: 900px) {
   .closing__grid { grid-template-columns: 1fr; }
-  .closing__group { transform: scale(1); margin-top: 2rem; }
+  .closing__group { transform: scale(1.5); margin: 3rem 0; }
 }
 
 /* Empty Lifestyle Slots */
 .lifestyle-slot { opacity: 0 !important; }
 
 
-/* FINAL OVERLAPS FIX */
-.hero__title, .hero__title span { color: transparent !important; -webkit-text-stroke: 2px rgba(248, 196, 0, 0.3) !important; }
-.can-wrap--group { position: relative !important; left: auto !important; right: auto !important; top: auto !important; transform: none !important; margin: 0 10px; }
