@@ -2285,11 +2285,11 @@ p {
 }
 .closing__group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
   gap: 0;
-  transform: scale(2.5); /* Massive cans to fill the void */
-  transform-origin: bottom center;
+  transform: scale(2.2); /* Slightly smaller to be safe */
+  transform-origin: bottom right; /* Anchor to the right edge */
 }
 .closing__group .can-wrap--group {
   position: relative !important;
