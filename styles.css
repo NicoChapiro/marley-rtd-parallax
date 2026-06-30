@@ -2161,12 +2161,11 @@ p {
 }
 .ice-particle {
   position: absolute;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 40% 60% 70% 30%;
-  box-shadow: inset 2px 2px 5px rgba(255,255,255,0.4);
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.6);
+  border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
+  filter: blur(2px);
   animation: floatIce linear infinite;
 }
 @keyframes floatIce {
@@ -2191,10 +2190,10 @@ p {
 }
 
 .marquee-container {
-  overflow: hidden; white-space: nowrap; background: var(--black); padding: 16px 0; border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--charcoal);
+  overflow: hidden; white-space: nowrap; background: var(--black); padding: 24px 0; border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--charcoal);
 }
 .marquee-content {
-  display: inline-block; animation: scrollMarquee 20s linear infinite; font-family: var(--font-title); font-size: 2rem; color: var(--gold); letter-spacing: 2px;
+  display: inline-block; animation: scrollMarquee 20s linear infinite; font-family: var(--font-title); font-size: 3.5rem; /* Larger */ color: var(--gold); letter-spacing: 2px;
 }
 .marquee-content span { padding-right: 2rem; }
 @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -2208,7 +2207,7 @@ p {
 /* 1. Hero Sandwich Effect */
 .hero__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
   position: relative;
@@ -2217,40 +2216,36 @@ p {
 .hero__title {
   position: absolute;
   z-index: 1;
-  font-size: clamp(6rem, 15vw, 15rem);
+  font-size: clamp(6rem, 18vw, 20rem);
   line-height: 0.9;
   text-align: center;
   width: 100%;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: transparent;
-  -webkit-text-stroke: 2px rgba(248, 196, 0, 0.4); /* subtle gold outline */
+  -webkit-text-stroke: 2px rgba(248, 196, 0, 0.3);
   pointer-events: none;
-}
-.hero__title span { display: block; }
-.hero__stage {
-  position: relative;
-  z-index: 2;
-  transform: scale(1.6);
-  margin: 2rem auto;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
 }
 .hero__copy {
   position: relative;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 15rem; /* pushes it below the cans */
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 0;
+  grid-column: 1;
 }
-/* mobile tweaks */
-@media (max-width: 768px) {
-  .hero__stage { transform: scale(1.2); }
-  .hero__copy { margin-top: 10rem; }
+.hero__stage {
+  grid-column: 2;
+  transform: scale(1.6);
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__copy { grid-column: 1; align-items: center; text-align: center; margin-bottom: 2rem; }
+  .hero__stage { grid-column: 1; transform: scale(1.2); }
 }
 
 /* 2. Ritual Floating Physics & Ice pop */
@@ -2297,8 +2292,11 @@ p {
 }
 .closing__group {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  gap: 1rem;
   transform: scale(1.3);
+  width: 100%;
 }
 .closing__cta {
   grid-column: 1 / -1;
@@ -2309,3 +2307,6 @@ p {
   .closing__grid { grid-template-columns: 1fr; }
   .closing__group { transform: scale(1); margin-top: 2rem; }
 }
+
+/* Empty Lifestyle Slots */
+.lifestyle-slot { opacity: 0 !important; }
