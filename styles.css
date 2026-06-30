@@ -426,7 +426,9 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   background: linear-gradient(180deg, #2b2b2b 0%, #111 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 86%, 50% 76%, 0 86%);
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+  padding-bottom: 24px;
   box-shadow: var(--mc-shadow);
 }
 
@@ -442,7 +444,7 @@ p {
 
 .hero__title {
   margin: 0;
-  color: var(--mc-yellow);
+  color: var(--gold);
   font-size: clamp(3.4rem, 8vw, 7rem);
   font-weight: 400;
   line-height: 0.88;
@@ -642,7 +644,7 @@ p {
   );
 }
 
-.ritual h2 { display: flex; flex-wrap: wrap; gap: .12em .2em; align-items: baseline; }
+.ritual h2 { display: flex; flex-wrap: wrap; gap: .12em .2em; align-items: baseline; color: var(--gold); }
 .ritual h2 span { opacity: .36; transform: translateY(20px); display: inline-block; transition: opacity .45s ease, transform .45s ease, color .45s ease, text-shadow .45s ease; }
 .ritual h2 span.is-active { opacity: 1; transform: translateY(0); color: var(--gold); text-shadow: 0 0 26px rgba(248,196,0,.38); }
 .ritual h2 span:nth-of-type(3):not(.is-active) { opacity: .58; color: rgba(251,240,212,.78); }
@@ -742,10 +744,7 @@ p {
   --active-flavor-glow: rgba(234, 215, 164, .3);
   min-height: 178svh;
   padding-block: 0;
-  background:
-    radial-gradient(circle at 72% 34%, var(--active-flavor-glow), transparent 28%),
-    radial-gradient(circle at 22% 18%, rgba(214, 244, 255, .14), transparent 18%),
-    linear-gradient(180deg, #080807 0, #020202 100%);
+  background-color: #050505;
   transition: background .45s ease;
 }
 .flavors-scroll[data-active-flavor="vanilla"] { --active-flavor-color: #ead7a4; --active-flavor-glow: rgba(234, 215, 164, .32); }
@@ -1148,10 +1147,7 @@ p {
   min-height: auto;
   padding-top: clamp(72px, 6vw, 108px);
   padding-bottom: clamp(76px, 6vw, 112px);
-  background:
-    radial-gradient(circle at 72% 36%, rgba(255,255,255,.42), transparent 23%),
-    radial-gradient(circle at 22% 86%, rgba(111,141,42,.2), transparent 22%),
-    linear-gradient(180deg, #ffe56a 0, var(--gold) 58%, #e7ad00 100%);
+  background-color: var(--gold);
   color: #1a1710;
 }
 
@@ -1177,18 +1173,29 @@ p {
   align-items: center;
   gap: 12px;
   padding: 16px 24px;
-  background: rgba(17, 16, 15, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: #fff;
+  color: var(--black);
+  clip-path: polygon(2% 0, 98% 3%, 100% 98%, 1% 100%);
+  transform: rotate(-1deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--font-subtitle); font-size: clamp(1.45rem, 3.2vw, 2.75rem); line-height: .96;
+}
+.closing__labels span:nth-child(even) {
+  clip-path: polygon(0 2%, 100% 0, 98% 99%, 3% 97%);
+  transform: rotate(1.5deg);
+}
+.closing__labels span:nth-child(3) {
+  background: var(--red);
   color: #fff;
-  font-family: var(--font-subtitle); font-size: clamp(1.45rem, 3.2vw, 2.75rem); font-weight: 900; text-transform: uppercase; line-height: .96;
+}
+.closing__labels span:nth-child(3) .benefit-icon {
+  color: #fff;
 }
 .benefit-icon {
   width: 24px;
   height: 24px;
-  color: var(--gold);
+  color: var(--green);
 }
 
 .closing__group { position: relative; min-height: clamp(440px, 40vw, 560px); overflow: visible; }
@@ -2115,4 +2122,51 @@ p {
   .lifestyle-story[data-active-lifestyle="closeup"] .lifestyle-slot--closeup {
     transform: none;
   }
+}
+
+.closing h2 { color: var(--gold); }
+
+.ribbon-green {
+  background: var(--green);
+  color: var(--gold);
+  padding: 8px 32px;
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+.ribbon-green::before, .ribbon-green::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 16px;
+  background: var(--green);
+  z-index: -1;
+}
+.ribbon-green::before { left: -10px; transform: skewY(45deg); }
+.ribbon-green::after { right: -10px; transform: skewY(-45deg); }
+
+.ice-particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ice-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 5px rgba(255,255,255,0.4);
+  animation: floatIce linear infinite;
+}
+@keyframes floatIce {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }

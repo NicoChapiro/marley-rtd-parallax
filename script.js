@@ -464,3 +464,21 @@ if (!reduceMotion) {
     setActiveLifestyle(reducedMotionQuery.matches ? 'outdoor' : section.dataset.activeLifestyle || 'outdoor');
   });
 })();
+
+/* ── Ice Particles CSS generator ────────────────────────────────── */
+(function() {
+  const container = document.querySelector('.ice-particles-container');
+  if (!container || reducedMotionQuery.matches) return;
+  for (let i = 0; i < 40; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'ice-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    const size = Math.random() * 30 + 10;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+    particle.style.animationDelay = '-' + (Math.random() * 15) + 's';
+    container.appendChild(particle);
+  }
+})();
