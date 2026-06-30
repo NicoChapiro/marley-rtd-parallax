@@ -2310,3 +2310,8 @@ p {
 
 /* Empty Lifestyle Slots */
 .lifestyle-slot { opacity: 0 !important; }
+
+
+/* FINAL OVERLAPS FIX */
+.hero__title, .hero__title span { color: transparent !important; -webkit-text-stroke: 2px rgba(248, 196, 0, 0.3) !important; }
+.can-wrap--group { position: relative !important; left: auto !important; right: auto !important; top: auto !important; transform: none !important; margin: 0 10px; }
