@@ -166,6 +166,16 @@ if (!reduceMotion) {
     if (!desktopQuery.matches) return;
     mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
     mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+
+    const sabores = document.getElementById('sabores');
+    if (sabores) {
+      const rect = sabores.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      sabores.style.setProperty('--mouse-x', x + '%');
+      sabores.style.setProperty('--mouse-y', y + '%');
+    }
+
     requestTick();
   }, { passive: true });
   requestTick();
@@ -481,4 +491,20 @@ if (!reduceMotion) {
     particle.style.animationDelay = '-' + (Math.random() * 15) + 's';
     container.appendChild(particle);
   }
+})();
+
+/* ── Magnetic Buttons ───────────────────────────────────────────── */
+(function() {
+  const magnets = document.querySelectorAll('.magnetic-btn');
+  magnets.forEach(btn => {
+    btn.addEventListener('pointermove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('pointerleave', () => {
+      btn.style.transform = 'translate(0,0)';
+    });
+  });
 })();
