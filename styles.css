@@ -2288,22 +2288,30 @@ p {
   justify-content: flex-end;
   align-items: flex-end;
   gap: 0;
-  transform: scale(2.2); /* Slightly smaller to be safe */
-  transform-origin: bottom right; /* Anchor to the right edge */
+  width: 100%;
 }
 .closing__group .can-wrap--group {
   position: relative !important;
   left: auto !important; right: auto !important; top: auto !important;
-  margin: 0 -15px; /* Pull them together into a cluster */
+  margin: 0 -20px; /* Pull them together into a cluster */
+}
+.closing__group .can-wrap--group .can {
+  width: 250px !important; /* Explicit huge size */
+  max-width: none;
 }
 .closing__group .can-wrap--group:nth-child(2) {
   z-index: 2;
-  transform: translateY(-20px) scale(1.1) !important; /* Middle can is taller and in front */
+  margin-bottom: 30px; /* Elevate middle can instead of transform */
+}
+.closing__group .can-wrap--group:nth-child(2) .can {
+  width: 280px !important; /* Middle can even bigger */
 }
 .closing__cta { grid-column: 1 / -1; text-align: center; margin-top: 6rem; }
 @media (max-width: 900px) {
   .closing__grid { grid-template-columns: 1fr; }
-  .closing__group { transform: scale(1.5); margin: 3rem 0; }
+  .closing__group { justify-content: center; margin: 3rem 0; }
+  .closing__group .can-wrap--group .can { width: 160px !important; }
+  .closing__group .can-wrap--group:nth-child(2) .can { width: 190px !important; }
 }
 
 /* Empty Lifestyle Slots */
