@@ -2318,3 +2318,211 @@ p {
 .lifestyle-slot { opacity: 0 !important; }
 
 
+
+/* 4. Closing Campaign Card Refresh */
+.closing {
+  display: block;
+  min-height: auto;
+  padding: clamp(56px, 7vw, 104px) clamp(18px, 4vw, 56px);
+  background: var(--gold);
+  color: var(--charcoal);
+}
+
+.closing::before,
+.closing::after {
+  display: none;
+}
+
+.closing .rasta-stripe {
+  display: none;
+}
+
+.closing__inner {
+  position: relative;
+  max-width: 1480px;
+  margin-inline: auto;
+  padding: clamp(56px, 6vw, 96px) clamp(42px, 6vw, 92px);
+  border-radius: clamp(28px, 4vw, 54px);
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255,255,255,.22), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.02));
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 24px 60px rgba(26,23,16,.14), inset 0 1px 0 rgba(255,255,255,.22);
+  overflow: hidden;
+}
+
+.closing__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: 0;
+}
+
+.closing__group {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(26px, 4.8vw, 72px);
+  width: 100%;
+  min-height: clamp(280px, 26vw, 430px);
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.closing__group .can-wrap--group {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  overflow: visible;
+}
+
+.closing__group .can-wrap--group .can {
+  width: clamp(150px, 13vw, 230px) !important;
+  max-width: none;
+  max-height: none;
+  filter: drop-shadow(0 28px 34px rgba(0,0,0,.25));
+}
+
+.closing__group .can-wrap--group-van {
+  transform: rotate(-12deg) translateY(10px) !important;
+}
+
+.closing__group .can-wrap--group-cap {
+  z-index: 2;
+  transform: translateY(-18px) !important;
+}
+
+.closing__group .can-wrap--group-cap .can {
+  width: clamp(175px, 15vw, 265px) !important;
+}
+
+.closing__group .can-wrap--group-car {
+  transform: rotate(12deg) translateY(10px) !important;
+}
+
+.closing__labels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  align-items: center;
+  justify-content: stretch;
+  gap: clamp(18px, 2.5vw, 38px);
+  width: 100%;
+  max-width: 1180px;
+  margin: clamp(32px, 4vw, 56px) auto 0;
+  z-index: 2;
+}
+
+.closing__labels span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 70px;
+  padding: 14px 22px;
+  background: #fff;
+  color: #111;
+  clip-path: polygon(2% 0, 98% 3%, 100% 98%, 1% 100%);
+  font-family: var(--font-subtitle);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.45vw, 1.8rem);
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px rgba(0,0,0,.14);
+}
+
+.closing__labels span:nth-child(1) { transform: rotate(-2deg) translateY(4px); }
+.closing__labels span:nth-child(2) { transform: rotate(1.5deg) translateY(-2px); }
+.closing__labels span:nth-child(3) { transform: rotate(-1deg) translateY(2px); }
+.closing__labels span:nth-child(4) { transform: rotate(2deg) translateY(-4px); }
+
+.closing__labels span.closing__label--red {
+  background: var(--red);
+  color: #fff;
+}
+
+.closing__labels span.closing__label--red .benefit-icon {
+  color: #fff;
+}
+
+.closing__labels .benefit-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  color: var(--green);
+}
+
+.closing__cta {
+  max-width: 760px;
+  margin: clamp(52px, 6vw, 80px) auto 0;
+  padding-top: 0;
+  text-align: center;
+}
+
+.closing__cta h2 {
+  color: #111;
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(3rem, 6vw, 7.5rem);
+  line-height: .88;
+  text-transform: uppercase;
+}
+
+.closing__cta p:not(.eyebrow) {
+  max-width: 58ch;
+  margin: 18px auto 0;
+  color: rgba(26,23,16,.82);
+  font-weight: 700;
+}
+
+.closing__cta .button {
+  margin-top: 24px;
+  font-size: 1.08rem;
+  padding-inline: 44px;
+}
+
+@media (max-width: 900px) {
+  .closing__inner {
+    padding: clamp(42px, 9vw, 64px) clamp(18px, 5vw, 34px);
+  }
+
+  .closing__group {
+    gap: clamp(8px, 2vw, 18px);
+    min-height: clamp(250px, 66vw, 360px);
+  }
+
+  .closing__group .can-wrap--group .can {
+    width: clamp(104px, 28vw, 160px) !important;
+  }
+
+  .closing__group .can-wrap--group-cap .can {
+    width: clamp(124px, 32vw, 190px) !important;
+  }
+
+  .closing__labels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .closing__labels span {
+    min-height: 64px;
+    padding: 12px 14px;
+    font-size: clamp(.92rem, 3.8vw, 1.18rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .closing__labels {
+    grid-template-columns: 1fr;
+  }
+
+  .closing__labels span {
+    width: 100%;
+  }
+}
