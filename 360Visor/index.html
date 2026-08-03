@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Visor 360° del producto</title>
+
+    <!-- Componente oficial Model Viewer -->
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #f2f2f2;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <model-viewer
+        src="./producto.glb"
+        alt="Vista interactiva 360 grados del producto"
+
+        camera-controls
+        auto-rotate
+        auto-rotate-delay="0"
+        rotation-per-second="18deg"
+
+        disable-pan
+        shadow-intensity="1"
+        shadow-softness="0.8"
+        exposure="1"
+
+        interaction-prompt="auto"
+        touch-action="pan-y">
+    </model-viewer>
+
+</body>
+</html>
